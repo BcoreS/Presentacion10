@@ -1,339 +1,533 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presentación: jQuery y Google APIs</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Presentación: jQuery y Google APIs</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../CSS/style.css">
-</head>
-
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">
-        <i class="bi bi-code-square"></i> jQuery y Google APIs
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#guia">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#jquery">jQuery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#googleapis">Google APIs</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Container -->
-  <div class="container my-5">
-
-    <!-- Guía de temas -->
-    <section id="guia" class="mb-5">
-      <div class="card shadow-sm border-0">
-        <div class="card-header bg-primary text-white">
-          <h2 class="card-title mb-0 h4">
-            <i class="bi bi-list-check"></i> Guía de Temas
-          </h2>
-        </div>
-        <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <i class="bi bi-check-circle text-success"></i> Library jQuery
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">
+          <i class="bi bi-code-square"></i> jQuery y Google APIs
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#guia"
+                >Inicio</a
+              >
             </li>
-            <li class="list-group-item">
-              <i class="bi bi-check-circle text-success"></i> Google APIs: Maps, Geolocation, Translate, Charts
+            <li class="nav-item">
+              <a class="nav-link" href="#jquery">jQuery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#googleapis">Google APIs</a>
             </li>
           </ul>
         </div>
       </div>
-    </section>
+    </nav>
 
-    <!-- jQuery Section -->
-    <section id="jquery" class="mb-5">
-      <div class="card shadow-sm border-0">
-        <div class="card-header bg-info text-white">
-          <h2 class="card-title mb-0 h4">
-            <i class="bi bi-filetype-js"></i> 1. Library jQuery
-          </h2>
-
+    <!-- Main Container -->
+    <div class="container my-5">
+      <!-- Guía de temas -->
+      <section id="guia" class="mb-5">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-primary text-white">
+            <h2 class="card-title mb-0 h4">
+              <i class="bi bi-list-check"></i> Guía de Temas
+            </h2>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="bi bi-check-circle text-success"></i> Library jQuery
+              </li>
+              <li class="list-group-item">
+                <i class="bi bi-check-circle text-success"></i> Google APIs:
+                Maps, Geolocation, Translate, Charts
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Google APIs Section -->
-    <section id="googleapis" class="mb-5">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title">2. Google APIs</h2>
+      <!-- jQuery Section -->
+      <section id="jquery" class="mb-5">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-info text-white">
+            <h2 class="card-title mb-0 h4">
+              <i class="bi bi-filetype-js"></i> 1. Library jQuery
+            </h2>
+          </div>
+        </div>
+      </section>
 
-          <!-- Tabs Navigation -->
-          <ul class="nav nav-tabs" id="googleApiTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="maps-tab" data-bs-toggle="tab" data-bs-target="#maps" type="button"
-                role="tab" aria-controls="maps" aria-selected="true">
-                Google Maps
-              </button>
-            </li>
-           
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="translate-tab" data-bs-toggle="tab" data-bs-target="#translate" type="button"
-                role="tab" aria-controls="translate" aria-selected="false">
-                Google Translate
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="charts-tab" data-bs-toggle="tab" data-bs-target="#charts" type="button"
-                role="tab" aria-controls="charts" aria-selected="false">
-                Google Charts
-              </button>
-            </li>
-          </ul>
+      <!-- Google APIs Section -->
+      <section id="googleapis" class="mb-5">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">2. Google APIs</h2>
 
-          <!-- Tabs Content -->
-          <div class="tab-content mt-3" id="googleApiTabsContent">
-            <!-- Google Maps Tab -->
-            <div class="tab-pane fade show active" id="maps" role="tabpanel" aria-labelledby="maps-tab">
-              <h3 class="mb-4">Google Maps</h3>
-              
-              <!-- Accordion para secciones colapsables -->
-              <div class="accordion" id="googleMapsAccordion">
-                
-                <!-- 1. Referencia a Objeto Geolocation -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      <strong>1. Referencia a Objeto Geolocation</strong>
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#googleMapsAccordion">
-                    <div class="accordion-body">
-                      <p class="text-muted">El objeto Geolocation permite obtener la ubicación geográfica del dispositivo del usuario.</p>
-                      <div class="card bg-light mb-3">
-                        <div class="card-header bg-secondary text-white">
-                          <strong>Código: Referencia a Objeto Geolocation</strong>
-                        </div>
-                        <div class="card-body">
-                          <pre><code class="language-javascript">
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-tabs" id="googleApiTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="maps-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#maps"
+                  type="button"
+                  role="tab"
+                  aria-controls="maps"
+                  aria-selected="true"
+                >
+                  Google Maps
+                </button>
+              </li>
+
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="translate-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#translate"
+                  type="button"
+                  role="tab"
+                  aria-controls="translate"
+                  aria-selected="false"
+                >
+                  Google Translate
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="charts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#charts"
+                  type="button"
+                  role="tab"
+                  aria-controls="charts"
+                  aria-selected="false"
+                >
+                  Google Charts
+                </button>
+              </li>
+            </ul>
+
+            <!-- Tabs Content -->
+            <div class="tab-content mt-3" id="googleApiTabsContent">
+              <!-- Google Maps Tab -->
+              <div
+                class="tab-pane fade show active"
+                id="maps"
+                role="tabpanel"
+                aria-labelledby="maps-tab"
+              >
+                <h3 class="mb-4">Google Maps</h3>
+
+                <!-- Accordion para secciones colapsables -->
+                <div class="accordion" id="googleMapsAccordion">
+                  <!-- 1. Referencia a Objeto Geolocation -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button
+                        class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne"
+                        aria-expanded="true"
+                        aria-controls="collapseOne"
+                      >
+                        <strong>1. Referencia a Objeto Geolocation</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="collapseOne"
+                      class="accordion-collapse collapse show"
+                      aria-labelledby="headingOne"
+                      data-bs-parent="#googleMapsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p class="text-muted">
+                          El objeto Geolocation permite obtener la ubicación
+                          geográfica del dispositivo del usuario.
+                        </p>
+                        <div class="card bg-light mb-3">
+                          <div class="card-header bg-secondary text-white">
+                            <strong
+                              >Código: Referencia a Objeto Geolocation</strong
+                            >
+                          </div>
+                          <div class="card-body">
+                            <pre><code class="language-javascript">
                           // Aquí va el código de la función de Geolocation
                           </code></pre>
+                          </div>
                         </div>
-                      </div>
-                      
-                      <!-- Mapa de ejemplo para Geolocation -->
-                      <div class="card mt-3">
-                        <div class="card-header bg-dark text-white">
-                          <strong>Ejemplo Visual - Mapa Geolocation</strong>
-                        </div>
-                        <div class="card-body">
-                          <div id="map-geolocation" style="height: 350px; background-color: #e9ecef;" class="border rounded">
-                            <!-- Aquí se renderizará el mapa para demostrar Geolocation -->
-                            <div class="d-flex align-items-center justify-content-center h-100">
-                              <p class="text-muted">Mapa de demostración de Geolocation se cargará aquí</p>
+
+                        <!-- Mapa de ejemplo para Geolocation -->
+                        <div class="card mt-3">
+                          <div class="card-header bg-dark text-white">
+                            <strong>Ejemplo Visual - Mapa Geolocation</strong>
+                          </div>
+                          <div class="card-body">
+                            <div
+                              id="map-geolocation"
+                              style="height: 350px; background-color: #e9ecef"
+                              class="border rounded"
+                            >
+                              <!-- Aquí se renderizará el mapa para demostrar Geolocation -->
+                              <div
+                                class="d-flex align-items-center justify-content-center h-100"
+                              >
+                                <p class="text-muted">
+                                  Mapa de demostración de Geolocation se cargará
+                                  aquí
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 2. Obtener la posición -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      <strong>2. Obtener la posición</strong>
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#googleMapsAccordion">
-                    <div class="accordion-body">
-                      <p class="text-muted">Utiliza el método getCurrentPosition() para obtener las coordenadas actuales del usuario.</p>
-                      <div class="card bg-light mb-3">
-                        <div class="card-header bg-secondary text-white">
-                          <strong>Código: Obtener la posición</strong>
-                        </div>
-                        <div class="card-body">
-                          <pre><code class="language-javascript">
+                  <!-- 2. Obtener la posición -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo"
+                        aria-expanded="false"
+                        aria-controls="collapseTwo"
+                      >
+                        <strong>2. Obtener la posición</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="collapseTwo"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="headingTwo"
+                      data-bs-parent="#googleMapsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p class="text-muted">
+                          Utiliza el método getCurrentPosition() para obtener
+                          las coordenadas actuales del usuario.
+                        </p>
+                        <div class="card bg-light mb-3">
+                          <div class="card-header bg-secondary text-white">
+                            <strong>Código: Obtener la posición</strong>
+                          </div>
+                          <div class="card-body">
+                            <pre><code class="language-javascript">
                           // Aquí va el código para obtener la posición
                           </code></pre>
+                          </div>
                         </div>
-                      </div>
-                      
-                      <!-- Mapa de ejemplo para Obtener la posición -->
-                      <div class="card mt-3">
-                        <div class="card-header bg-dark text-white">
-                          <strong>Ejemplo Visual - Obtener Posición</strong>
-                        </div>
-                        <div class="card-body">
-                          <div id="map-get-position" style="height: 350px; background-color: #e9ecef;" class="border rounded">
-                            <!-- Aquí se renderizará el mapa para demostrar getCurrentPosition -->
-                            <div class="d-flex align-items-center justify-content-center h-100">
-                              <p class="text-muted">Mapa de demostración de getCurrentPosition se cargará aquí</p>
+
+                        <!-- Mapa de ejemplo para Obtener la posición -->
+                        <div class="card mt-3">
+                          <div class="card-header bg-dark text-white">
+                            <strong>Ejemplo Visual - Obtener Posición</strong>
+                          </div>
+                          <div class="card-body">
+                            <div
+                              id="map-get-position"
+                              style="height: 350px; background-color: #e9ecef"
+                              class="border rounded"
+                            >
+                              <!-- Aquí se renderizará el mapa para demostrar getCurrentPosition -->
+                              <div
+                                class="d-flex align-items-center justify-content-center h-100"
+                              >
+                                <p class="text-muted">
+                                  Mapa de demostración de getCurrentPosition se
+                                  cargará aquí
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 3. Manejo de errores -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      <strong>3. Manejo de errores</strong>
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#googleMapsAccordion">
-                    <div class="accordion-body">
-                      <p class="text-muted">Implementa callbacks de error para manejar situaciones donde la geolocalización falla.</p>
-                      <div class="card bg-light mb-3">
-                        <div class="card-header bg-secondary text-white">
-                          <strong>Código: Manejo de errores</strong>
-                        </div>
-                        <div class="card-body">
-                          <pre><code class="language-javascript">
+                  <!-- 3. Manejo de errores -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree"
+                        aria-expanded="false"
+                        aria-controls="collapseThree"
+                      >
+                        <strong>3. Manejo de errores</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="collapseThree"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="headingThree"
+                      data-bs-parent="#googleMapsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p class="text-muted">
+                          Implementa callbacks de error para manejar situaciones
+                          donde la geolocalización falla.
+                        </p>
+                        <div class="card bg-light mb-3">
+                          <div class="card-header bg-secondary text-white">
+                            <strong>Código: Manejo de errores</strong>
+                          </div>
+                          <div class="card-body">
+                            <pre><code class="language-javascript">
                           // Aquí va el código para el manejo de errores
                           </code></pre>
+                          </div>
                         </div>
-                      </div>
-                      
-                      <!-- Mapa de ejemplo para Manejo de errores -->
-                      <div class="card mt-3">
-                        <div class="card-header bg-dark text-white">
-                          <strong>Ejemplo Visual - Manejo de Errores</strong>
-                        </div>
-                        <div class="card-body">
-                          <div id="map-error-handling" style="height: 350px; background-color: #e9ecef;" class="border rounded">
-                            <!-- Aquí se renderizará el mapa para demostrar manejo de errores -->
-                            <div class="d-flex align-items-center justify-content-center h-100">
-                              <p class="text-muted">Mapa de demostración de manejo de errores se cargará aquí</p>
+
+                        <!-- Mapa de ejemplo para Manejo de errores -->
+                        <div class="card mt-3">
+                          <div class="card-header bg-dark text-white">
+                            <strong>Ejemplo Visual - Manejo de Errores</strong>
+                          </div>
+                          <div class="card-body">
+                            <div
+                              id="map-error-handling"
+                              style="height: 350px; background-color: #e9ecef"
+                              class="border rounded"
+                            >
+                              <!-- Aquí se renderizará el mapa para demostrar manejo de errores -->
+                              <div
+                                class="d-flex align-items-center justify-content-center h-100"
+                              >
+                                <p class="text-muted">
+                                  Mapa de demostración de manejo de errores se
+                                  cargará aquí
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 4. Mapeando posición actual -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingFour">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                      <strong>4. Mapeando posición actual</strong>
-                    </button>
-                  </h2>
-                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#googleMapsAccordion">
-                    <div class="accordion-body">
-                      <p class="text-muted">Integración con Google Maps JavaScript API para visualizar la ubicación en un mapa interactivo.</p>
-                      
-                      <h5 class="text-secondary mt-3">Librería Google Maps JavaScript API</h5>
-                      <div class="card bg-light mb-3">
-                        <div class="card-header bg-info text-white">
-                          <strong>Código: Recuperando la posición actual</strong>
-                        </div>
-                        <div class="card-body">
-                          <pre><code class="language-javascript">
+                  <!-- 4. Mapeando posición actual -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour"
+                        aria-expanded="false"
+                        aria-controls="collapseFour"
+                      >
+                        <strong>4. Mapeando posición actual</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="collapseFour"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="headingFour"
+                      data-bs-parent="#googleMapsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p class="text-muted">
+                          Integración con Google Maps JavaScript API para
+                          visualizar la ubicación en un mapa interactivo.
+                        </p>
+
+                        <h5 class="text-secondary mt-3">
+                          Librería Google Maps JavaScript API
+                        </h5>
+                        <div class="card bg-light mb-3">
+                          <div class="card-header bg-info text-white">
+                            <strong
+                              >Código: Recuperando la posición actual</strong
+                            >
+                          </div>
+                          <div class="card-body">
+                            <pre><code class="language-javascript">
                           // Aquí va el código para recuperar la posición actual con Google Maps
                           </code></pre>
+                          </div>
                         </div>
-                      </div>
-                      
-                      <!-- Mapa de ejemplo para Recuperando posición -->
-                      <div class="card mt-3 mb-4">
-                        <div class="card-header bg-dark text-white">
-                          <strong>Ejemplo Visual - Recuperando Posición Actual</strong>
-                        </div>
-                        <div class="card-body">
-                          <div id="map-current-position" style="height: 350px; background-color: #e9ecef;" class="border rounded">
-                            <!-- Aquí se renderizará el mapa para demostrar recuperación de posición -->
-                            <div class="d-flex align-items-center justify-content-center h-100">
-                              <p class="text-muted">Mapa de demostración de posición actual se cargará aquí</p>
+
+                        <!-- Mapa de ejemplo para Recuperando posición -->
+                        <div class="card mt-3 mb-4">
+                          <div class="card-header bg-dark text-white">
+                            <strong
+                              >Ejemplo Visual - Recuperando Posición
+                              Actual</strong
+                            >
+                          </div>
+                          <div class="card-body">
+                            <div
+                              id="map-current-position"
+                              style="height: 350px; background-color: #e9ecef"
+                              class="border rounded"
+                            >
+                              <!-- Aquí se renderizará el mapa para demostrar recuperación de posición -->
+                              <div
+                                class="d-flex align-items-center justify-content-center h-100"
+                              >
+                                <p class="text-muted">
+                                  Mapa de demostración de posición actual se
+                                  cargará aquí
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
 
-                      <h5 class="text-secondary mt-3">Cálculo de distancias entre puntos</h5>
-                      <div class="card bg-light mb-3">
-                        <div class="card-header bg-info text-white">
-                          <strong>Código: Cálculo de distancias</strong>
-                        </div>
-                        <div class="card-body">
-                          <pre><code class="language-javascript">
+                        <h5 class="text-secondary mt-3">
+                          Cálculo de distancias entre puntos
+                        </h5>
+                        <div class="card bg-light mb-3">
+                          <div class="card-header bg-info text-white">
+                            <strong>Código: Cálculo de distancias</strong>
+                          </div>
+                          <div class="card-body">
+                            <pre><code class="language-javascript">
                           // Aquí va el código para calcular distancias entre puntos
                           </code></pre>
+                          </div>
                         </div>
-                      </div>
-                      
-                      <!-- Mapa de ejemplo para Cálculo de distancias -->
-                      <div class="card mt-3">
-                        <div class="card-header bg-dark text-white">
-                          <strong>Ejemplo Visual - Cálculo de Distancias</strong>
-                        </div>
-                        <div class="card-body">
-                          <div id="map-distance-calc" style="height: 350px; background-color: #e9ecef;" class="border rounded">
-                            <!-- Aquí se renderizará el mapa para demostrar cálculo de distancias -->
-                            <div class="d-flex align-items-center justify-content-center h-100">
-                              <p class="text-muted">Mapa de demostración de cálculo de distancias se cargará aquí</p>
+
+                        <!-- Mapa de ejemplo para Cálculo de distancias -->
+                        <div class="card mt-3">
+                          <div class="card-header bg-dark text-white">
+                            <strong
+                              >Ejemplo Visual - Cálculo de Distancias</strong
+                            >
+                          </div>
+                          <div class="card-body">
+                            <div
+                              id="map-distance-calc"
+                              style="height: 350px; background-color: #e9ecef"
+                              class="border rounded"
+                            >
+                              <!-- Aquí se renderizará el mapa para demostrar cálculo de distancias -->
+                              <div
+                                class="d-flex align-items-center justify-content-center h-100"
+                              >
+                                <p class="text-muted">
+                                  Mapa de demostración de cálculo de distancias
+                                  se cargará aquí
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 5. Trazar una ruta -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingFive">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                      <strong>5. Trazar una ruta desde mi posición actual al punto de negocio de la página</strong>
-                    </button>
-                  </h2>
-                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#googleMapsAccordion">
-                    <div class="accordion-body">
-                      <p class="text-muted">
-                        <strong>Ejemplo:</strong> Ruta desde la posición actual del usuario hasta la UTN Sede Central Alajuela
-                        <br>
-                        <span class="badge bg-warning text-dark">Dirección: Universidad Técnica Nacional, Alajuela, Costa Rica</span>
-                        <br>
-                        <span class="badge bg-info">Coordenadas: 10.0162° N, -84.2136° W</span>
-                      </p>
-                      <div class="card bg-light mb-3">
-                        <div class="card-header bg-success text-white">
-                          <strong>Código: Trazar ruta a UTN Sede Central Alajuela</strong>
-                        </div>
-                        <div class="card-body">
-                          <pre><code class="language-javascript">
+                  <!-- 5. Trazar una ruta -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive"
+                        aria-expanded="false"
+                        aria-controls="collapseFive"
+                      >
+                        <strong
+                          >5. Trazar una ruta desde mi posición actual al punto
+                          de negocio de la página</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="collapseFive"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="headingFive"
+                      data-bs-parent="#googleMapsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p class="text-muted">
+                          <strong>Ejemplo:</strong> Ruta desde la posición
+                          actual del usuario hasta la UTN Sede Central Alajuela
+                          <br />
+                          <span class="badge bg-warning text-dark"
+                            >Dirección: Universidad Técnica Nacional, Alajuela,
+                            Costa Rica</span
+                          >
+                          <br />
+                          <span class="badge bg-info"
+                            >Coordenadas: 10.0162° N, -84.2136° W</span
+                          >
+                        </p>
+                        <div class="card bg-light mb-3">
+                          <div class="card-header bg-success text-white">
+                            <strong
+                              >Código: Trazar ruta a UTN Sede Central
+                              Alajuela</strong
+                            >
+                          </div>
+                          <div class="card-body">
+                            <pre><code class="language-javascript">
                           // Aquí va el código para trazar la ruta desde la posición actual hasta UTN Sede Central Alajuela
                           // Destino: Universidad Técnica Nacional, Alajuela, Costa Rica
                           </code></pre>
+                          </div>
                         </div>
-                      </div>
 
-                      <!-- Mapa de ejemplo -->
-                      <div class="card">
-                        <div class="card-header bg-dark text-white">
-                          <strong>Vista del Mapa - Ruta a UTN Alajuela</strong>
-                        </div>
-                        <div class="card-body">
-                          <div id="map" style="height: 400px; background-color: #e9ecef;" class="border rounded">
-                            <!-- Aquí se renderizará el mapa de Google Maps -->
-                            <div class="d-flex align-items-center justify-content-center h-100">
-                              <p class="text-muted">Mapa interactivo con ruta a UTN Alajuela se cargará aquí</p>
+                        <!-- Mapa de ejemplo -->
+                        <div class="card">
+                          <div class="card-header bg-dark text-white">
+                            <strong
+                              >Vista del Mapa - Ruta a UTN Alajuela</strong
+                            >
+                          </div>
+                          <div class="card-body">
+                            <div
+                              id="map"
+                              style="height: 400px; background-color: #e9ecef"
+                              class="border rounded"
+                            >
+                              <!-- Aquí se renderizará el mapa de Google Maps -->
+                              <div
+                                class="d-flex align-items-center justify-content-center h-100"
+                              >
+                                <p class="text-muted">
+                                  Mapa interactivo con ruta a UTN Alajuela se
+                                  cargará aquí
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -341,57 +535,54 @@
                     </div>
                   </div>
                 </div>
-
+                <!-- Fin del Accordion -->
               </div>
-              <!-- Fin del Accordion -->
 
-            </div>
+              <!-- Google Translate Tab -->
+              <div
+                class="tab-pane fade"
+                id="translate"
+                role="tabpanel"
+                aria-labelledby="translate-tab"
+              >
+                <h3>Google Translate</h3>
+                <ul>
+                  <li>Conceptos y uso básico</li>
+                </ul>
+              </div>
 
-           
-
-            <!-- Google Translate Tab -->
-            <div class="tab-pane fade" id="translate" role="tabpanel" aria-labelledby="translate-tab">
-              <h3>Google Translate</h3>
-              <ul>
-                <li>Conceptos y uso básico</li>
-              </ul>
-            </div>
-
-
-
-
-
-            <!-- Google Charts Tab -->
-            <div class="tab-pane fade" id="charts" role="tabpanel" aria-labelledby="charts-tab">
-              <h3>Google Charts</h3>
-              <ul>
-                <li>Conceptos y uso básico</li>
-              </ul>
+              <!-- Google Charts Tab -->
+              <div
+                class="tab-pane fade"
+                id="charts"
+                role="tabpanel"
+                aria-labelledby="charts-tab"
+              >
+                <h3>Google Charts</h3>
+                <ul>
+                  <li>Conceptos y uso básico</li>
+                </ul>
+              </div>
             </div>
           </div>
-
-
-
-
         </div>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-primary text-white text-center py-4 mt-5">
-    <div class="container">
-      <p class="mb-2">
-        <strong>Presentación: jQuery y Google APIs</strong>
-      </p>
-      <small class="text-white-50">[Nombres aquí] </small>
+      </section>
     </div>
-  </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../JS/Jquery.js"></script>
-</body>
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-4 mt-5">
+      <div class="container">
+        <p class="mb-2">
+          <strong>Presentación: jQuery y Google APIs</strong>
+        </p>
+        <small class="text-white-50">[Nombres aquí] </small>
+      </div>
+    </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/Jquery.js"></script>
+
+    <div>INGRESO JAFET</div>
+  </body>
 </html>
