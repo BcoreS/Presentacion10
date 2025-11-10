@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <!--Llave api google maps-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA&callback=initMap" async defer></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Presentación: jQuery y Google APIs</title>
@@ -712,8 +715,7 @@
                     >
                       <div class="accordion-body">
                         <p class="text-muted">
-                          El objeto Geolocation permite obtener la ubicación
-                          geográfica del dispositivo del usuario.
+                          El objeto Geolocation de HTML5 permite acceder a la ubicación geográfica del dispositivo. No es parte de la API de Google Maps, pero se usa comúnmente para obtener la posición actual del usuario.
                         </p>
                         <div class="card bg-light mb-3">
                           <div class="card-header bg-secondary text-white">
@@ -723,7 +725,11 @@
                           </div>
                           <div class="card-body">
                             <pre><code class="language-javascript">
-                          // Aquí va el código de la función de Geolocation
+                          if (navigator.geolocation) {
+                            console.log("Geolocation está disponible");
+                          } else {
+                            console.log("Geolocation no está disponible");
+                          }
                           </code></pre>
                           </div>
                         </div>
