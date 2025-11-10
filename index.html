@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <!--Llave api google maps-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=[llave aqui]&callback=initMap" async defer></script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -740,22 +740,15 @@
                             <strong>Ejemplo Visual - Mapa Geolocation</strong>
                           </div>
                           <div class="card-body">
-                            <div
-                              id="map-geolocation"
-                              style="height: 350px; background-color: #e9ecef"
-                              class="border rounded"
-                            >
-                              <!-- Aquí se renderizará el mapa para demostrar Geolocation -->
-                              <div
-                                class="d-flex align-items-center justify-content-center h-100"
-                              >
-                                <p class="text-muted">
-                                  Mapa de demostración de Geolocation se cargará
-                                  aquí
-                                </p>
-                              </div>
+                            <button class="btn btn-primary mb-3" onclick="checkGeolocation()">
+                              <i class="bi bi-geo-alt"></i> Verificar Geolocation
+                            </button>
+                            <div class="alert alert-info" id="geolocation-check-result" role="alert">
+                              <strong>Resultado:</strong> Haz clic en el botón para verificar si Geolocation está disponible
                             </div>
-                          </div>
+                            <div id="map-geolocation-demo" style="height: 350px; background-color: #e9ecef" class="border rounded">
+                            </div>
+                         </div>
                         </div>
                       </div>
                     </div>
