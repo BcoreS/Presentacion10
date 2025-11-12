@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Presentación: jQuery y Google APIs</title>
     <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="CSS/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../CSS/style.css" />
   </head>
 
@@ -74,8 +71,8 @@
         </div>
       </section>
 
-           <!-- jQuery Section -->
-      <section id="jquerysection" class="mb-5">
+      <!-- jQuery Section -->
+      <section id="jquery" class="mb-5">
         <div class="card">
           <div class="card-body">
             <h2 class="py-4 card-title">1. jQuery Libraries</h2>
@@ -156,21 +153,111 @@
                 role="tabpanel"
                 aria-labelledby="syntax-tab"
               >
-                <h3 class="mb-4">Subtitulo</h3>
+                <h3 class="mb-4">Cómo integrar JQuery a HTML:</h3>
                 <div class="accordion-body">
-                  <p class="text-muted">Descripción de lo explicado</p>
+                  <p class="text-muted">
+                    Primeramente, necesitamos comprender que un documento JS, se
+                    debe ejecutar una vez que el DOM esté construido, para esto
+                    tenemos algunas herramientas para asegurarnos que su
+                    ejecución suceda en ese momento.
+                    <br /><br />
+                    El Document Ready Event: Esto evita que se ejecute código
+                    jQuery antes de que el documento haya terminado de cargarse
+                    (esté listo). Esto permite agregar la referencia del archivo
+                    JS o código directo tanto en el head como en el body.
+                    <br /><br />
+                    <strong>Sin embargo</strong>
+                    esto no es necesario si colocas la referencia script al
+                    final del body o código directo. (Porque el DOM ya habrá
+                    sido creado)
+                    <br /><br />
+                  </p>
+                  <h3 class="mb-4">$ (selector).acción( );</h3>
+                  <p>
+                    Es importante reconocer que dentro de un archivo Js e
+                    incluso dentro del document ready mencionado anteriormente,
+                    cómo este trabaja, para esto debemos conocer sus partes y
+                    sus respectivas funciones:
+                    <br /><br />
+
+                    A) $: Es la forma en que jQuery se llama (es como decir “usa
+                    jQuery”) <br />B) Selector: Es lo que quieres seleccionar,
+                    igual que en CSS (#id, .clase, tag) <br />
+                    c) Acción :Es la función o método que quieres ejecutar
+                    <br /><br />
+                    En la siguiente pestaña podremos ver que existen diferentes
+                    <strong> tipos de selectores</strong>, siendo bastante
+                    similar a CSS.
+                  </p>
                   <div class="card bg-light mb-3">
                     <div class="card-header bg-secondary text-white">
-                      <strong>Código: Referencia</strong>
+                      <strong
+                        >Cómo integrar y usar JQuery: Código de
+                        referencia</strong
+                      >
                     </div>
                     <div class="card-body">
-                      <pre><code class="language-javascript">
-                          // Aquí va el código de Referencia
-                          </code></pre>
+                      <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+
+    &lt;script&gt;   &lt;!-- Código directo en head: NECESITA document.ready --&gt;
+      $(document).ready(function(){
+        // Aquí va el código jQuery en caso de ser necesario
+      });
+    &lt;/script&gt;
+
+    &lt;title&gt;Ejemplo&lt;/title&gt;
+    &lt;script src="JS/JPropio.js"&gt;&lt;/script&gt; &lt;!-- Archivo externo en head: NECESITA document.ready si manipula el DOM --&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;script src="JS/JPropio.js"&gt;&lt;/script&gt; &lt;!-- Si está aquí, todavía antes de elementos: NECESITA document.ready --&gt;
+
+    &lt;h5 class="Ejemplo1A"&gt;Texto 1&lt;/h5&gt;
+
+    &lt;script&gt;  &lt;!-- Código directo antes de terminar el DOM: NECESITA document.ready --&gt;
+      $(document).ready(function(){
+        // Código jQuery
+      });
+    &lt;/script&gt;
+
+    &lt;h5 class="Ejemplo1B text-muted"&gt;Texto 2&lt;/h5&gt;
+
+    &lt;script src="JS/JPropio.js"&gt;&lt;/script&gt; &lt;!-- Al final del body: NO necesita document.ready --&gt;
+
+    &lt;script&gt;  &lt;!-- Instrucciones directas al final: NO necesita document.ready --&gt;
+      // Código que manipula elementos ya cargados
+    &lt;/script&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- EJEMPLO EN JS EXTERNO (JPropio.js) --&gt;
+
+// Si se carga en head o antes de los elementos, usar document.ready
+$(document).ready(function () {
+  $(".Ejemplo1A").css("background-color", "black");
+  $(".Ejemplo1A").css("color", "white");
+
+  $(".Ejemplo1B").css("background-color", "white");
+  $(".Ejemplo1B").css("color", "black");
+});
+
+// Si se carga al final del body, se puede usar directamente
+$(".Ejemplo1A").css("background-color", "black");
+$(".Ejemplo1A").css("color", "white");
+
+$(".Ejemplo1B").css("background-color", "white");
+$(".Ejemplo1B").css("color", "black");
+  </code></pre>
                     </div>
                   </div>
 
-                  <!-- Mapa de ejemplo para Geolocation -->
+                  <!-- Ejemplo visual -->
                   <div class="card mt-3">
                     <div class="card-header bg-dark text-white">
                       <strong>Ejemplo Visual - Funciones</strong>
@@ -181,13 +268,14 @@
                         style="height: 350px; background-color: #e9ecef"
                         class="border rounded"
                       >
-                        <!-- Aquí se renderizará el mapa para demostrar Geolocation -->
+                        <!-- Aquí se muestra -->
                         <div
                           class="d-flex align-items-center justify-content-center h-100"
+                          style="flex-direction: column; gap: 5%"
                         >
-                          <p class="text-muted">
-                            En esta zona encontramos las cosas a presentar
-                          </p>
+                          <h1 class="Ejemplo1A">Texto 1</h1>
+                          <h1 class="Ejemplo1B text-muted">Texto 2</h1>
+                          <p class="text-muted"></p>
                         </div>
                       </div>
                     </div>
@@ -632,38 +720,88 @@
 
             <ul class="nav nav-tabs" id="googleApiTabs" role="tablist">
               <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="maps-tab" data-bs-toggle="tab" data-bs-target="#maps" type="button" role="tab" aria-controls="maps" aria-selected="true">
+                <button
+                  class="nav-link active"
+                  id="maps-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#maps"
+                  type="button"
+                  role="tab"
+                  aria-controls="maps"
+                  aria-selected="true"
+                >
                   Google Maps
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="translate-tab" data-bs-toggle="tab" data-bs-target="#translate" type="button" role="tab" aria-controls="translate" aria-selected="false">
+                <button
+                  class="nav-link"
+                  id="translate-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#translate"
+                  type="button"
+                  role="tab"
+                  aria-controls="translate"
+                  aria-selected="false"
+                >
                   Google Translate
                 </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="charts-tab" data-bs-toggle="tab" data-bs-target="#charts" type="button" role="tab" aria-controls="charts" aria-selected="false">
+                <button
+                  class="nav-link"
+                  id="charts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#charts"
+                  type="button"
+                  role="tab"
+                  aria-controls="charts"
+                  aria-selected="false"
+                >
                   Google Charts
                 </button>
               </li>
             </ul>
 
             <div class="tab-content mt-3" id="googleApiTabsContent">
-              <div class="tab-pane fade show active" id="maps" role="tabpanel" aria-labelledby="maps-tab">
+              <div
+                class="tab-pane fade show active"
+                id="maps"
+                role="tabpanel"
+                aria-labelledby="maps-tab"
+              >
                 <h3 class="mb-4">Google Maps</h3>
 
                 <div class="accordion" id="googleMapsAccordion">
                   <!-- 1 y 2 -->
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="mapsHeadingOne">
-                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#mapsCollapseOne" aria-expanded="true" aria-controls="mapsCollapseOne">
-                        <strong>1. Referencia Geolocation y 2. Obtener posición</strong>
+                      <button
+                        class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mapsCollapseOne"
+                        aria-expanded="true"
+                        aria-controls="mapsCollapseOne"
+                      >
+                        <strong
+                          >1. Referencia Geolocation y 2. Obtener
+                          posición</strong
+                        >
                       </button>
                     </h2>
-                    <div id="mapsCollapseOne" class="accordion-collapse collapse show" aria-labelledby="mapsHeadingOne" data-bs-parent="#googleMapsAccordion">
+                    <div
+                      id="mapsCollapseOne"
+                      class="accordion-collapse collapse show"
+                      aria-labelledby="mapsHeadingOne"
+                      data-bs-parent="#googleMapsAccordion"
+                    >
                       <div class="accordion-body">
                         <p class="text-muted">
-                          El objeto Geolocation de HTML5 permite acceder a la ubicación geográfica del dispositivo. No es parte de la API de Google Maps, pero se usa comúnmente para obtener la posición actual del usuario.
+                          El objeto Geolocation de HTML5 permite acceder a la
+                          ubicación geográfica del dispositivo. No es parte de
+                          la API de Google Maps, pero se usa comúnmente para
+                          obtener la posición actual del usuario.
                         </p>
                         <div class="card bg-light mb-3">
                           <div class="card-header bg-secondary text-white">
@@ -702,35 +840,63 @@
                             <strong>Ejemplo Visual - Mapa Geolocation</strong>
                           </div>
                           <div class="card-body">
-                            <button class="btn btn-primary mb-3" onclick="checkGeolocation()">
-                              <i class="bi bi-geo-alt"></i> Verificar Geolocation
+                            <button
+                              class="btn btn-primary mb-3"
+                              onclick="checkGeolocation()"
+                            >
+                              <i class="bi bi-geo-alt"></i> Verificar
+                              Geolocation
                             </button>
-                            <div class="alert alert-info" id="geolocation-check-result" role="alert">
-                              <strong>Resultado:</strong> Haz clic en el botón para verificar si Geolocation está disponible
+                            <div
+                              class="alert alert-info"
+                              id="geolocation-check-result"
+                              role="alert"
+                            >
+                              <strong>Resultado:</strong> Haz clic en el botón
+                              para verificar si Geolocation está disponible
                             </div>
-                            <div id="map-geolocation-demo" style="height: 350px; background-color: #e9ecef" class="border rounded">
-                            </div>
-                         </div>
+                            <div
+                              id="map-geolocation-demo"
+                              style="height: 350px; background-color: #e9ecef"
+                              class="border rounded"
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>                  
+                  </div>
 
                   <!-- 2. Manejo de errores -->
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="mapsHeadingThree">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mapsCollapseThree" aria-expanded="false" aria-controls="mapsCollapseThree">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mapsCollapseThree"
+                        aria-expanded="false"
+                        aria-controls="mapsCollapseThree"
+                      >
                         <strong>2. Manejo de errores</strong>
                       </button>
                     </h2>
-                    <div id="mapsCollapseThree" class="accordion-collapse collapse" aria-labelledby="mapsHeadingThree" data-bs-parent="#googleMapsAccordion">
+                    <div
+                      id="mapsCollapseThree"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="mapsHeadingThree"
+                      data-bs-parent="#googleMapsAccordion"
+                    >
                       <div class="accordion-body">
                         <p class="text-muted">
-                          El método getCurrentPosition() acepta un callback para manejar errores, como la denegación de permisos o la indisponibilidad del servicio.
-                          Tipos de errores comunes:
+                          El método getCurrentPosition() acepta un callback para
+                          manejar errores, como la denegación de permisos o la
+                          indisponibilidad del servicio. Tipos de errores
+                          comunes:
                           <br /><br />
-                          PERMISSION_DENIED: El usuario no permitió el acceso a la ubicación.<br /><br />
-                          POSITION_UNAVAILABLE: La ubicación no está disponible.<br /><br />
+                          PERMISSION_DENIED: El usuario no permitió el acceso a
+                          la ubicación.<br /><br />
+                          POSITION_UNAVAILABLE: La ubicación no está
+                          disponible.<br /><br />
                           TIMEOUT: El servicio tardó demasiado en responder.<br /><br />
                         </p>
                         <div class="card bg-light mb-3">
@@ -762,36 +928,57 @@
                               }
                             );
                           </code></pre>
-                          
                           </div>
                         </div>
 
                         <!-- Demostración de manejo de errores -->
                         <div class="card mt-3">
                           <div class="card-header bg-dark text-white">
-                            <strong>Demostración - Manejo de errores de Geolocation</strong>
+                            <strong
+                              >Demostración - Manejo de errores de
+                              Geolocation</strong
+                            >
                           </div>
                           <div class="card-body">
-                            <div class="btn-group mb-3" role="group" aria-label="Geolocation error demo">
-                              <button class="btn btn-outline-primary" onclick="geoRequestPermissionDenied()">
+                            <div
+                              class="btn-group mb-3"
+                              role="group"
+                              aria-label="Geolocation error demo"
+                            >
+                              <button
+                                class="btn btn-outline-primary"
+                                onclick="geoRequestPermissionDenied()"
+                              >
                                 Solicitar ubicación (niega el permiso)
                               </button>
-                              <button class="btn btn-outline-warning" onclick="geoForceTimeout()">
+                              <button
+                                class="btn btn-outline-warning"
+                                onclick="geoForceTimeout()"
+                              >
                                 Forzar TIMEOUT
                               </button>
-                              <button class="btn btn-outline-secondary" onclick="geoSimulatePositionUnavailable()">
+                              <button
+                                class="btn btn-outline-secondary"
+                                onclick="geoSimulatePositionUnavailable()"
+                              >
                                 Simular POSITION_UNAVAILABLE
                               </button>
-                              <button class="btn btn-outline-dark" onclick="geoClearResult()">
+                              <button
+                                class="btn btn-outline-dark"
+                                onclick="geoClearResult()"
+                              >
                                 Limpiar
                               </button>
                             </div>
-                            <div id="geo-error-result" class="alert alert-info" role="alert">
+                            <div
+                              id="geo-error-result"
+                              class="alert alert-info"
+                              role="alert"
+                            >
                               Haz clic en un botón para ver el resultado aquí.
                             </div>
                           </div>
                         </div>
-                      
                       </div>
                     </div>
                   </div>
@@ -799,11 +986,23 @@
                   <!-- 3. Cálculo de distancias entre puntos -->
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="mapsHeadingFour">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mapsCollapseFour" aria-expanded="false" aria-controls="mapsCollapseFour">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mapsCollapseFour"
+                        aria-expanded="false"
+                        aria-controls="mapsCollapseFour"
+                      >
                         <strong>3. Cálculo de distancias</strong>
                       </button>
                     </h2>
-                    <div id="mapsCollapseFour" class="accordion-collapse collapse" aria-labelledby="mapsHeadingFour" data-bs-parent="#googleMapsAccordion">
+                    <div
+                      id="mapsCollapseFour"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="mapsHeadingFour"
+                      data-bs-parent="#googleMapsAccordion"
+                    >
                       <div class="accordion-body">
                         <h5 class="text-secondary mt-3">
                           Cálculo de distancias entre puntos
@@ -836,19 +1035,43 @@
                             <!-- Controles para elegir puntos -->
                             <div class="row g-2 align-items-center mb-3">
                               <div class="col-md-5">
-                                <input id="placeA" type="text" class="form-control" placeholder="Punto A: escribe una dirección o haz clic en el mapa" />
+                                <input
+                                  id="placeA"
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Punto A: escribe una dirección o haz clic en el mapa"
+                                />
                               </div>
                               <div class="col-md-5">
-                                <input id="placeB" type="text" class="form-control" placeholder="Punto B: escribe una dirección o haz clic en el mapa" />
+                                <input
+                                  id="placeB"
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Punto B: escribe una dirección o haz clic en el mapa"
+                                />
                               </div>
                               <div class="col-md-2 d-grid d-md-block">
-                                <button class="btn btn-outline-secondary me-2 mb-2 mb-md-0" onclick="clearDistancePoints()">Limpiar</button>
-                                <button class="btn btn-primary" onclick="fitDistanceBounds()">Enfocar</button>
+                                <button
+                                  class="btn btn-outline-secondary me-2 mb-2 mb-md-0"
+                                  onclick="clearDistancePoints()"
+                                >
+                                  Limpiar
+                                </button>
+                                <button
+                                  class="btn btn-primary"
+                                  onclick="fitDistanceBounds()"
+                                >
+                                  Enfocar
+                                </button>
                               </div>
                             </div>
 
-                            <div id="distance-result" class="alert alert-info py-2 mb-3">
-                              Indica dos puntos haciendo clic en el mapa o usando las cajas de búsqueda.
+                            <div
+                              id="distance-result"
+                              class="alert alert-info py-2 mb-3"
+                            >
+                              Indica dos puntos haciendo clic en el mapa o
+                              usando las cajas de búsqueda.
                             </div>
                             <div
                               id="map-distance-calc"
@@ -942,7 +1165,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <!-- Fin del Accordion -->
               </div>
 
@@ -992,10 +1215,13 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/jquery-3.7.1.min.js"></script>
     <script src="JS/JSPropio.js"></script>
     <!-- Mueve la carga de Google Maps aquí y quita "async" -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA&libraries=geometry,places&callback=initMap" defer></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA&libraries=geometry,places&callback=initMap"
+      defer
+    ></script>
   </body>
 </html>
