@@ -1,4 +1,6 @@
 // Área de JQuery
+
+//Sintaxis Basica
 //SI NECESITA DOCUMENT READY
 $(document).ready(function () {
   $(".Ejemplo1A").css("background-color", "black");
@@ -8,6 +10,15 @@ $(document).ready(function () {
   $(".Ejemplo1B").css("color", "black");
 });
 
+//Seleccion de elementos
+
+
+
+
+
+
+
+//Eventos
 //Primer ejemplo
 // Botón principal
 $("#btnClick").click(function () {

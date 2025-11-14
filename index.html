@@ -291,42 +291,229 @@ $(".Ejemplo1B").css("color", "black");
               >
                 <h3 class="mb-4">Selección de elementos</h3>
                 <div class="accordion-body">
-                  <p class="text-muted">Descripción de lo explicado</p>
-                  <div class="card bg-light mb-3">
-                    <div class="card-header bg-secondary text-white">
+                  <p class="text-muted">Un selector de elementos en jQuery es una expresión que permite identificar y seleccionar uno o varios elementos del DOM (Document Object Model) para manipularlos mediante métodos jQuery.</p>
+<!--Acordion-->
+                    <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+       <h5> Seleccion por Etiqueta</h5>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>Los selectores por etiqueta en jQuery son los más básicos y se usan para seleccionar elementos HTML por su nombre de etiqueta directamente.</p>
+        <div class="card-header bg-secondary text-white">
                       <strong>Código: Referencia</strong>
                     </div>
                     <div class="card-body">
                       <pre><code class="language-javascript">
-                          // Aquí va el código de Referencia
+// Seleccionar todos los párrafos p
+$("p");
+
+// Seleccionar todas las imágenes img
+$("img");
+
+// Seleccionar todos los encabezados h1
+$("h1");
+
+// Seleccionar todas las listas ul
+$("ul");
+
+// Seleccionar todos los botones button
+$("button");
+  </code></pre>
+                    </div>
+                  </div>
+
+                  <!-- Mapa de ejemplo para Geolocation -->
+                
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <h5>Seleccion por ID</h5>
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>Permite identificar un único elemento (o varios si comparten el mismo ID, aunque no es recomendable) para manipularlo con jQuery.</p>
+<div class="card-header bg-secondary text-white">
+                      <strong>Código: Referencia</strong>
+                    </div>
+                     <div class="card-body">
+                      <pre><code class="language-javascript">
+
+// Seleccionar un elemento con ID "titulo"
+$("#titulo");
+
+// Seleccionar un botón con ID "btnEnviar"
+$("#btnEnviar");
+
+// Seleccionar un div con ID "contenedor"
+$("#contenedor");
+
+  </code></pre>
+                     </div>
+                  </div>
+
+                  
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <h5>Seleccion por Clase</h5>
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>Permite identificar uno o varios elementos que comparten la misma clase para aplicarles cambios o eventos.
+</p>
+<div class="card-header bg-secondary text-white">
+                      <strong>Código: Referencia</strong>
+                    </div>
+                    <div class="card-body">
+                      <pre><code class="language-javascript">
+
+// Seleccionar todos los elementos con la clase "activo"
+$(".activo");
+
+// Seleccionar todos los párrafos con la clase "resaltado"
+$("p.resaltado");
+
+// Seleccionar todos los divs con la clase "contenedor"
+$("div.contenedor");
+
+  </code></pre>
+                    </div>
+                  </div>
+
+                  <!-- Mapa de ejemplo para Geolocation -->
+             
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        <h5>Seleccion por Jerarquia</h5>
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>los selectores por jerarquía permiten seleccionar elementos en función de su relación dentro del árbol DOM.</p>
+        <div class="card-header bg-secondary text-white">
+                      <strong>Código: Referencia</strong>
+                    </div>
+                    <div class="card-body">
+                      <pre><code class="language-javascript">
+// Seleccionar todos los li que están dentro de un ul
+$("ul li");
+
+// Seleccionar todos los span dentro de un div
+$("div span");
+
+// Seleccionar los p que son hijos directos de un div
+$("div > p");
+
+// Seleccionar el primer li dentro de cada ul
+$("ul li:first-child");
+
+// Seleccionar el último p dentro de un section
+$("section p:last-child):
                           </code></pre>
                     </div>
                   </div>
 
-                  <!-- Ejemplo  -->
-                  <div class="card mt-3">
-                    <div class="card-header bg-dark text-white">
-                      <strong>Ejemplo Visual - Funciones</strong>
+                  <!-- Mapa de ejemplo para Geolocation -->
+                  
+               </div>
+             </div>
+          <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        <h5>Seleccion por Atributo</h5>
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>Los selectores por atributo en jQuery permiten seleccionar elementos HTML basándose en los atributos que tienen. Se escriben entre corchetes [] </p>
+        <div class="card-header bg-secondary text-white">
+                      <strong>Código: Referencia</strong>
                     </div>
                     <div class="card-body">
-                      <div
-                        style="height: 350px; background-color: #e9ecef"
-                        class="border rounded"
-                      >
-                        <!-- Pizarra -->
-                        <div
-                          class="d-flex align-items-center justify-content-center h-100"
-                        >
-                          <p class="text-muted">
-                            En esta zona encontramos las cosas a presentar
-                          </p>
-                        </div>
-                      </div>
+                      <pre><code class="language-javascript">
+// Seleccionar todos los elementos que tienen el atributo title
+$("[title]");
+
+// Seleccionar todos los inputs con atributo type="text"
+$("input[type='text']");
+
+// Seleccionar todos los enlaces con atributo href
+$("a[href]");
+
+// Seleccionar imágenes con atributo alt específico
+$("img[alt='logo']");
+
+// Seleccionar botones con atributo disabled
+$("button[disabled]");                          </code></pre>
                     </div>
                   </div>
-                </div>
-              </div>
 
+                 
+               </div>
+             </div>
+
+
+              <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        <h5>Seleccion Combinado</h5>
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p> Los selectores combinados por atributo en jQuery permiten mezclar atributos con etiquetas, clases o incluso otros atributos.
+        </p>
+<p><strong>Cómo funciona:</strong></p>
+        <ul>
+          <li>etiqueta + atributo:</li>
+          <li>atributo + clase</li>
+          <li>varios atributos</li>
+        </ul>
+
+        <div class="card-header bg-secondary text-white">
+                      <strong>Código: Referencia</strong>
+                    </div>
+
+                    <div class="card-body">
+                      <pre><code class="language-javascript">
+// Seleccionar todos los inputs de tipo texto dentro de un formulario
+$("form input[type='text']");
+
+// Seleccionar enlaces a con atributo target="_blank"
+$("a[target='_blank']");
+
+// Seleccionar imágenes con atributo alt y clase específica
+$("img[alt='logo'].img-fluid");
+
+// Seleccionar botones con atributo disabled y clase btn-primary
+$("button[disabled].btn-primary");
+
+// Seleccionar div con atributo data-role="admin"
+$("div[data-role='admin']");
+                          </code></pre>
+                    </div>
+                  </div>
+
+                 
+               </div>
+             </div>
+
+            </div>
+        </div>
+     </div>
               <!-- TAB 3: Manipulación del DOM -->
               <div
                 class="tab-pane fade"
