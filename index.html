@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../CSS/style.css" />
   </head>
 
-  ody>
+  <body>
     <!-- Navbar -->
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow"
@@ -396,10 +396,7 @@ $(".Ejemplo1B").css("color", "black");
                         aria-expanded="true"
                         aria-controls="collapseOne"
                       >
-                        <strong
-                          >Ejemplo 1: Mostrar un mensaje cuando se hace clic en
-                          un botón</strong
-                        >
+                        <strong>Click</strong>
                       </button>
                     </h2>
                     <div
@@ -696,15 +693,15 @@ $(".Ejemplo1B").css("color", "black");
                         class="accordion-button collapsed"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#collapseFive"
+                        data-bs-target="#collapseFive-j"
                         aria-expanded="false"
-                        aria-controls="collapseFive"
+                        aria-controls="collapseFive-j"
                       >
                         <strong>Ejemplo 5: X Cosa</strong>
                       </button>
                     </h2>
                     <div
-                      id="collapseFive"
+                      id="collapseFive-j"
                       class="accordion-collapse collapse"
                       aria-labelledby="headingFive"
                       data-bs-parent="#JqueryAccordion"
@@ -748,6 +745,8 @@ $(".Ejemplo1B").css("color", "black");
                   </div>
                 </div>
               </div>
+
+              <!-- TAB 4: Eventos -->
             </div>
           </div>
         </div>
@@ -824,7 +823,7 @@ $(".Ejemplo1B").css("color", "black");
                 <h3 class="mb-4">Google Maps</h3>
 
                 <div class="accordion" id="googleMapsAccordion">
-                  <!-- Referencia Geolocation y 2. Obtener posición<-->
+                  <!-- Referencia Geolocation y 2. Obtener posición -->
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="mapsHeadingOne">
                       <button
@@ -1164,8 +1163,8 @@ $(".Ejemplo1B").css("color", "black");
                           actual del usuario hasta el Parque Central de Alajuela
                           <br />
                           <span class="badge bg-warning text-dark"
-                            >Dirección: Parque Central, Alajuela,
-                            Costa Rica</span
+                            >Dirección: Parque Central, Alajuela, Costa
+                            Rica</span
                           >
                           <br />
                           <span class="badge bg-info"
@@ -1176,7 +1175,7 @@ $(".Ejemplo1B").css("color", "black");
                           <div class="card-header bg-success text-white">
                             <strong
                               >Código: Trazar ruta al Parque Central, Alajuela,
-                            Costa Rica.</strong
+                              Costa Rica.</strong
                             >
                           </div>
                           <div class="card-body">
@@ -1265,7 +1264,8 @@ function initRouteMap() {
                         <div class="card">
                           <div class="card-header bg-dark text-white">
                             <strong
-                              >Vista del Mapa - Ruta Parque Central de Alajuela</strong
+                              >Vista del Mapa - Ruta Parque Central de
+                              Alajuela</strong
                             >
                           </div>
                           <div class="card-body">
@@ -1274,7 +1274,8 @@ function initRouteMap() {
                               id="route-info"
                               role="alert"
                             >
-                              <strong>Estado:</strong> Cargando mapa y obteniendo tu ubicación...
+                              <strong>Estado:</strong> Cargando mapa y
+                              obteniendo tu ubicación...
                             </div>
                             <div
                               id="map"
