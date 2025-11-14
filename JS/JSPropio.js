@@ -8,12 +8,86 @@ $(document).ready(function () {
   $(".Ejemplo1B").css("color", "black");
 });
 
-//SINO PUEDE SER DIRECTO
-$(".Ejemplo1A").css("background-color", "black");
-$(".Ejemplo1A").css("color", "white");
+//Primer ejemplo
+// Botón principal
+$("#btnClick").click(function () {
+  $("#cuadroClick")
+    .text("¡Hiciste clic!")
+    .css("background-color", "lightgreen");
+});
 
-$(".Ejemplo1B").css("background-color", "white");
-$(".Ejemplo1B").css("color", "black");
+// Botón de reinicio
+$("#btnReset").click(function () {
+  $("#cuadroClick")
+    .text("Esperando clic...")
+    .css("background-color", "lightgray");
+});
+
+//Segundo ejemplo
+$("#cuadroDblClick").dblclick(function () {
+  const cuadro = $(this);
+
+  if (cuadro.hasClass("agrandado")) {
+    // Volver al tamaño original
+    cuadro
+      .removeClass("agrandado")
+      .css({
+        "background-color": "lightblue",
+        width: "150px",
+        height: "150px",
+      })
+      .text("Doble clic aquí");
+  } else {
+    // Agrandar
+    cuadro
+      .addClass("agrandado")
+      .css({
+        "background-color": "orange",
+        width: "250px",
+        height: "250px",
+      })
+      .text("¡Doble clic detectado!");
+  }
+});
+
+//Tercer Ejemplo
+
+// Evento mouseover: cuando el mouse entra
+$("#cuadroHover").mouseover(function () {
+  $(this).css("background-color", "#b3e5fc").text("Mouse encima 👀");
+});
+
+// Evento mouseout: cuando el mouse sale
+$("#cuadroHover").mouseout(function () {
+  $(this).css("background-color", "#dcdcdc").text("Pasa el mouse aquí");
+});
+
+//Cuarto ejemplo
+
+$("#inputKeyup").keyup(function () {
+  const texto = $(this).val();
+  $("#mensajeKeyup").text("Número de caracteres: " + texto.length);
+});
+
+//Quinto ejemplo
+
+$("#formSubmit").submit(function (e) {
+  e.preventDefault(); // Previene el envío real
+
+  const nombre = $("#nombreSubmit").val();
+  if (nombre.trim() === "") {
+    $("#mensajeSubmit")
+      .text("Por favor, ingresa tu nombre")
+      .css("color", "red");
+  } else {
+    $("#mensajeSubmit")
+      .text("¡Formulario enviado correctamente, " + nombre + "!")
+      .css("color", "green");
+
+    // Opcional: resetear formulario
+    $(this)[0].reset();
+  }
+});
 
 // Área de Google API
 
@@ -139,9 +213,9 @@ function initErrorHandlingMap() {
 
 // Ruta desde ubicación actual a UTN (map)
 function initRouteMap() {
-  const mapDiv = document.getElementById('map');
-  const routeInfo = document.getElementById('route-info');
-  
+  const mapDiv = document.getElementById("map");
+  const routeInfo = document.getElementById("route-info");
+
   if (!mapDiv) return;
 
   // Crear mapa centrado en el Parque Central
@@ -156,40 +230,42 @@ function initRouteMap() {
   new google.maps.Marker({
     position: DEST_PARQUE_CENTRAL,
     map: map,
-    title: 'Parque Central de Alajuela',
-    icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-    animation: google.maps.Animation.DROP
+    title: "Parque Central de Alajuela",
+    icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+    animation: google.maps.Animation.DROP,
   });
 
   // Verificar si geolocation está disponible
   if (!navigator.geolocation) {
     if (routeInfo) {
-      routeInfo.className = 'alert alert-danger mb-3';
-      routeInfo.innerHTML = '<strong>Error:</strong> Tu navegador no soporta geolocalización.';
+      routeInfo.className = "alert alert-danger mb-3";
+      routeInfo.innerHTML =
+        "<strong>Error:</strong> Tu navegador no soporta geolocalización.";
     }
     return;
   }
 
   // Obtener ubicación del usuario
   if (routeInfo) {
-    routeInfo.className = 'alert alert-warning mb-3';
-    routeInfo.innerHTML = '<strong>Obteniendo:</strong> Solicitando tu ubicación...';
+    routeInfo.className = "alert alert-warning mb-3";
+    routeInfo.innerHTML =
+      "<strong>Obteniendo:</strong> Solicitando tu ubicación...";
   }
 
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const userLocation = {
         lat: position.coords.latitude,
-        lng: position.coords.longitude
+        lng: position.coords.longitude,
       };
 
       // Marcador de ubicación del usuario
       new google.maps.Marker({
         position: userLocation,
         map: map,
-        title: 'Tu ubicación actual',
-        icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-        animation: google.maps.Animation.DROP
+        title: "Tu ubicación actual",
+        icon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+        animation: google.maps.Animation.DROP,
       });
 
       // Configurar DirectionsService y Renderer
@@ -198,15 +274,16 @@ function initRouteMap() {
         map: map,
         suppressMarkers: false,
         polylineOptions: {
-          strokeColor: '#4285F4',
+          strokeColor: "#4285F4",
           strokeWeight: 5,
-          strokeOpacity: 0.8
-        }
+          strokeOpacity: 0.8,
+        },
       });
 
       if (routeInfo) {
-        routeInfo.className = 'alert alert-info mb-3';
-        routeInfo.innerHTML = '<strong>Calculando:</strong> Trazando la mejor ruta...';
+        routeInfo.className = "alert alert-info mb-3";
+        routeInfo.innerHTML =
+          "<strong>Calculando:</strong> Trazando la mejor ruta...";
       }
 
       // Solicitar la ruta
@@ -214,17 +291,17 @@ function initRouteMap() {
         {
           origin: userLocation,
           destination: DEST_PARQUE_CENTRAL,
-          travelMode: google.maps.TravelMode.DRIVING
+          travelMode: google.maps.TravelMode.DRIVING,
         },
         (response, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
             directionsRenderer.setDirections(response);
-            
+
             // Obtener información de la ruta
             const route = response.routes[0].legs[0];
-            
+
             if (routeInfo) {
-              routeInfo.className = 'alert alert-success mb-3';
+              routeInfo.className = "alert alert-success mb-3";
               routeInfo.innerHTML = `
                 <strong>✓ Ruta calculada:</strong><br/>
                 <i class="bi bi-geo-alt"></i> Distancia: <strong>${route.distance.text}</strong><br/>
@@ -232,15 +309,15 @@ function initRouteMap() {
                 <small class="text-muted">Desde tu ubicación hasta el Parque Central de Alajuela</small>
               `;
             }
-            
+
             console.log(`Distancia: ${route.distance.text}`);
             console.log(`Duración: ${route.duration.text}`);
             console.log(`Dirección inicial: ${route.start_address}`);
             console.log(`Dirección final: ${route.end_address}`);
           } else {
-            console.error('Error al trazar la ruta:', status);
+            console.error("Error al trazar la ruta:", status);
             if (routeInfo) {
-              routeInfo.className = 'alert alert-danger mb-3';
+              routeInfo.className = "alert alert-danger mb-3";
               routeInfo.innerHTML = `<strong>Error:</strong> No se pudo calcular la ruta. Estado: ${status}`;
             }
           }
@@ -248,34 +325,35 @@ function initRouteMap() {
       );
     },
     (error) => {
-      console.error('Error de geolocalización:', error);
-      let errorMsg = 'Error desconocido';
-      
-      switch(error.code) {
+      console.error("Error de geolocalización:", error);
+      let errorMsg = "Error desconocido";
+
+      switch (error.code) {
         case error.PERMISSION_DENIED:
-          errorMsg = 'Permiso denegado. Por favor, permite el acceso a tu ubicación.';
+          errorMsg =
+            "Permiso denegado. Por favor, permite el acceso a tu ubicación.";
           break;
         case error.POSITION_UNAVAILABLE:
-          errorMsg = 'Ubicación no disponible.';
+          errorMsg = "Ubicación no disponible.";
           break;
         case error.TIMEOUT:
-          errorMsg = 'Tiempo de espera agotado.';
+          errorMsg = "Tiempo de espera agotado.";
           break;
       }
-      
+
       if (routeInfo) {
-        routeInfo.className = 'alert alert-danger mb-3';
+        routeInfo.className = "alert alert-danger mb-3";
         routeInfo.innerHTML = `<strong>Error de Geolocalización:</strong> ${errorMsg}`;
       }
     },
     {
       enableHighAccuracy: true,
       timeout: 10000,
-      maximumAge: 0
+      maximumAge: 0,
     }
   );
 
-  console.log('Mapa de ruta inicializado');
+  console.log("Mapa de ruta inicializado");
 }
 
 // Mapa demo del botón "Verificar Geolocation"
@@ -375,9 +453,9 @@ function initErrorHandlingMap() {
 
 // Ruta desde ubicación actual a UTN (map)
 function initRouteMap() {
-  const mapDiv = document.getElementById('map');
-  const routeInfo = document.getElementById('route-info');
-  
+  const mapDiv = document.getElementById("map");
+  const routeInfo = document.getElementById("route-info");
+
   if (!mapDiv) return;
 
   // Crear mapa centrado en el Parque Central
@@ -392,40 +470,42 @@ function initRouteMap() {
   new google.maps.Marker({
     position: DEST_PARQUE_CENTRAL,
     map: map,
-    title: 'Parque Central de Alajuela',
-    icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-    animation: google.maps.Animation.DROP
+    title: "Parque Central de Alajuela",
+    icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+    animation: google.maps.Animation.DROP,
   });
 
   // Verificar si geolocation está disponible
   if (!navigator.geolocation) {
     if (routeInfo) {
-      routeInfo.className = 'alert alert-danger mb-3';
-      routeInfo.innerHTML = '<strong>Error:</strong> Tu navegador no soporta geolocalización.';
+      routeInfo.className = "alert alert-danger mb-3";
+      routeInfo.innerHTML =
+        "<strong>Error:</strong> Tu navegador no soporta geolocalización.";
     }
     return;
   }
 
   // Obtener ubicación del usuario
   if (routeInfo) {
-    routeInfo.className = 'alert alert-warning mb-3';
-    routeInfo.innerHTML = '<strong>Obteniendo:</strong> Solicitando tu ubicación...';
+    routeInfo.className = "alert alert-warning mb-3";
+    routeInfo.innerHTML =
+      "<strong>Obteniendo:</strong> Solicitando tu ubicación...";
   }
 
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const userLocation = {
         lat: position.coords.latitude,
-        lng: position.coords.longitude
+        lng: position.coords.longitude,
       };
 
       // Marcador de ubicación del usuario
       new google.maps.Marker({
         position: userLocation,
         map: map,
-        title: 'Tu ubicación actual',
-        icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-        animation: google.maps.Animation.DROP
+        title: "Tu ubicación actual",
+        icon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+        animation: google.maps.Animation.DROP,
       });
 
       // Configurar DirectionsService y Renderer
@@ -434,15 +514,16 @@ function initRouteMap() {
         map: map,
         suppressMarkers: false,
         polylineOptions: {
-          strokeColor: '#4285F4',
+          strokeColor: "#4285F4",
           strokeWeight: 5,
-          strokeOpacity: 0.8
-        }
+          strokeOpacity: 0.8,
+        },
       });
 
       if (routeInfo) {
-        routeInfo.className = 'alert alert-info mb-3';
-        routeInfo.innerHTML = '<strong>Calculando:</strong> Trazando la mejor ruta...';
+        routeInfo.className = "alert alert-info mb-3";
+        routeInfo.innerHTML =
+          "<strong>Calculando:</strong> Trazando la mejor ruta...";
       }
 
       // Solicitar la ruta
@@ -450,17 +531,17 @@ function initRouteMap() {
         {
           origin: userLocation,
           destination: DEST_PARQUE_CENTRAL,
-          travelMode: google.maps.TravelMode.DRIVING
+          travelMode: google.maps.TravelMode.DRIVING,
         },
         (response, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
             directionsRenderer.setDirections(response);
-            
+
             // Obtener información de la ruta
             const route = response.routes[0].legs[0];
-            
+
             if (routeInfo) {
-              routeInfo.className = 'alert alert-success mb-3';
+              routeInfo.className = "alert alert-success mb-3";
               routeInfo.innerHTML = `
                 <strong>✓ Ruta calculada:</strong><br/>
                 <i class="bi bi-geo-alt"></i> Distancia: <strong>${route.distance.text}</strong><br/>
@@ -468,15 +549,15 @@ function initRouteMap() {
                 <small class="text-muted">Desde tu ubicación hasta el Parque Central de Alajuela</small>
               `;
             }
-            
+
             console.log(`Distancia: ${route.distance.text}`);
             console.log(`Duración: ${route.duration.text}`);
             console.log(`Dirección inicial: ${route.start_address}`);
             console.log(`Dirección final: ${route.end_address}`);
           } else {
-            console.error('Error al trazar la ruta:', status);
+            console.error("Error al trazar la ruta:", status);
             if (routeInfo) {
-              routeInfo.className = 'alert alert-danger mb-3';
+              routeInfo.className = "alert alert-danger mb-3";
               routeInfo.innerHTML = `<strong>Error:</strong> No se pudo calcular la ruta. Estado: ${status}`;
             }
           }
@@ -484,34 +565,35 @@ function initRouteMap() {
       );
     },
     (error) => {
-      console.error('Error de geolocalización:', error);
-      let errorMsg = 'Error desconocido';
-      
-      switch(error.code) {
+      console.error("Error de geolocalización:", error);
+      let errorMsg = "Error desconocido";
+
+      switch (error.code) {
         case error.PERMISSION_DENIED:
-          errorMsg = 'Permiso denegado. Por favor, permite el acceso a tu ubicación.';
+          errorMsg =
+            "Permiso denegado. Por favor, permite el acceso a tu ubicación.";
           break;
         case error.POSITION_UNAVAILABLE:
-          errorMsg = 'Ubicación no disponible.';
+          errorMsg = "Ubicación no disponible.";
           break;
         case error.TIMEOUT:
-          errorMsg = 'Tiempo de espera agotado.';
+          errorMsg = "Tiempo de espera agotado.";
           break;
       }
-      
+
       if (routeInfo) {
-        routeInfo.className = 'alert alert-danger mb-3';
+        routeInfo.className = "alert alert-danger mb-3";
         routeInfo.innerHTML = `<strong>Error de Geolocalización:</strong> ${errorMsg}`;
       }
     },
     {
       enableHighAccuracy: true,
       timeout: 10000,
-      maximumAge: 0
+      maximumAge: 0,
     }
   );
 
-  console.log('Mapa de ruta inicializado');
+  console.log("Mapa de ruta inicializado");
 }
 
 // Función para verificar si Geolocation está disponible
@@ -693,12 +775,12 @@ let distanceLine = null;
 let distanceInfoWindow = null;
 
 function initDistanceMap() {
-  const container = document.getElementById('map-distance-calc');
-  if (!container || typeof google === 'undefined' || !google.maps) return;
+  const container = document.getElementById("map-distance-calc");
+  if (!container || typeof google === "undefined" || !google.maps) return;
 
   // Evitar re-inicialización
   if (distanceMap) {
-    google.maps.event.trigger(distanceMap, 'resize');
+    google.maps.event.trigger(distanceMap, "resize");
     fitDistanceBounds();
     return;
   }
@@ -714,11 +796,11 @@ function initDistanceMap() {
   distanceInfoWindow = new google.maps.InfoWindow();
 
   // Click en el mapa para colocar/mover puntos
-  distanceMap.addListener('click', (e) => {
+  distanceMap.addListener("click", (e) => {
     if (!distanceMarkers.A) {
-      distanceMarkers.A = createDraggableMarker(e.latLng, 'A');
+      distanceMarkers.A = createDraggableMarker(e.latLng, "A");
     } else if (!distanceMarkers.B) {
-      distanceMarkers.B = createDraggableMarker(e.latLng, 'B');
+      distanceMarkers.B = createDraggableMarker(e.latLng, "B");
     } else {
       // Si ya hay dos puntos, mueve el punto B
       distanceMarkers.B.setPosition(e.latLng);
@@ -727,10 +809,10 @@ function initDistanceMap() {
   });
 
   // Autocomplete para inputs
-  wireDistanceAutocomplete('placeA', 'A');
-  wireDistanceAutocomplete('placeB', 'B');
+  wireDistanceAutocomplete("placeA", "A");
+  wireDistanceAutocomplete("placeB", "B");
 
-  console.log('Mapa de distancias inicializado');
+  console.log("Mapa de distancias inicializado");
 }
 
 function createDraggableMarker(position, label) {
@@ -740,12 +822,12 @@ function createDraggableMarker(position, label) {
     draggable: true,
     label: {
       text: label,
-      color: 'white',
-      fontWeight: 'bold'
+      color: "white",
+      fontWeight: "bold",
     },
-    animation: google.maps.Animation.DROP
+    animation: google.maps.Animation.DROP,
   });
-  marker.addListener('dragend', computeAndShowDistance);
+  marker.addListener("dragend", computeAndShowDistance);
   return marker;
 }
 
@@ -753,24 +835,29 @@ function wireDistanceAutocomplete(inputId, which) {
   const input = document.getElementById(inputId);
   if (!input || !distanceMap) return;
 
-  const ac = new google.maps.places.Autocomplete(input, { 
-    fields: ['geometry', 'name', 'formatted_address'] 
+  const ac = new google.maps.places.Autocomplete(input, {
+    fields: ["geometry", "name", "formatted_address"],
   });
-  ac.bindTo('bounds', distanceMap);
+  ac.bindTo("bounds", distanceMap);
 
-  ac.addListener('place_changed', () => {
+  ac.addListener("place_changed", () => {
     const place = ac.getPlace();
     if (!place.geometry || !place.geometry.location) {
-      console.warn('No se encontró la ubicación para:', input.value);
+      console.warn("No se encontró la ubicación para:", input.value);
       return;
     }
 
     if (!distanceMarkers[which]) {
-      distanceMarkers[which] = createDraggableMarker(place.geometry.location, which);
+      distanceMarkers[which] = createDraggableMarker(
+        place.geometry.location,
+        which
+      );
     } else {
       distanceMarkers[which].setPosition(place.geometry.location);
     }
-    distanceMarkers[which].setTitle(place.formatted_address || place.name || which);
+    distanceMarkers[which].setTitle(
+      place.formatted_address || place.name || which
+    );
 
     distanceMap.panTo(place.geometry.location);
     computeAndShowDistance();
@@ -780,17 +867,18 @@ function wireDistanceAutocomplete(inputId, which) {
 function computeAndShowDistance() {
   const a = distanceMarkers.A?.getPosition();
   const b = distanceMarkers.B?.getPosition();
-  const out = document.getElementById('distance-result');
+  const out = document.getElementById("distance-result");
 
   if (!a || !b) {
-    if (distanceLine) { 
-      distanceLine.setMap(null); 
-      distanceLine = null; 
+    if (distanceLine) {
+      distanceLine.setMap(null);
+      distanceLine = null;
     }
     if (distanceInfoWindow) distanceInfoWindow.close();
     if (out) {
-      out.className = 'alert alert-info py-2 mb-3';
-      out.textContent = 'Selecciona ambos puntos A y B para calcular la distancia.';
+      out.className = "alert alert-info py-2 mb-3";
+      out.textContent =
+        "Selecciona ambos puntos A y B para calcular la distancia.";
     }
     return;
   }
@@ -799,7 +887,7 @@ function computeAndShowDistance() {
   if (!distanceLine) {
     distanceLine = new google.maps.Polyline({
       path: [a, b],
-      strokeColor: '#0d6efd',
+      strokeColor: "#0d6efd",
       strokeOpacity: 0.9,
       strokeWeight: 4,
       map: distanceMap,
@@ -812,18 +900,23 @@ function computeAndShowDistance() {
   // Cálculo de distancia con geometry.spherical
   const point1 = new google.maps.LatLng(a.lat(), a.lng());
   const point2 = new google.maps.LatLng(b.lat(), b.lng());
-  const meters = google.maps.geometry.spherical.computeDistanceBetween(point1, point2);
+  const meters = google.maps.geometry.spherical.computeDistanceBetween(
+    point1,
+    point2
+  );
   const km = (meters / 1000).toFixed(3);
 
   // Mostrar en el alert
   if (out) {
-    out.className = 'alert alert-success py-2 mb-3';
-    out.innerHTML = `<strong>✓ Distancia calculada:</strong> ${meters.toFixed(0)} metros (${km} km)`;
+    out.className = "alert alert-success py-2 mb-3";
+    out.innerHTML = `<strong>✓ Distancia calculada:</strong> ${meters.toFixed(
+      0
+    )} metros (${km} km)`;
   }
 
   // InfoWindow en el punto medio de la línea
   const mid = new google.maps.LatLng(
-    (a.lat() + b.lat()) / 2, 
+    (a.lat() + b.lat()) / 2,
     (a.lng() + b.lng()) / 2
   );
   distanceInfoWindow.setContent(
@@ -846,7 +939,7 @@ function fitDistanceBounds() {
 
   if (a && b) {
     const bounds = new google.maps.LatLngBounds();
-    bounds.extend(a); 
+    bounds.extend(a);
     bounds.extend(b);
     distanceMap.fitBounds(bounds);
   } else if (a || b) {
@@ -868,22 +961,23 @@ function clearDistancePoints() {
     distanceMarkers.B = null;
   }
 
-  if (distanceLine) { 
-    distanceLine.setMap(null); 
-    distanceLine = null; 
+  if (distanceLine) {
+    distanceLine.setMap(null);
+    distanceLine = null;
   }
   if (distanceInfoWindow) distanceInfoWindow.close();
 
-  const out = document.getElementById('distance-result');
+  const out = document.getElementById("distance-result");
   if (out) {
-    out.className = 'alert alert-info py-2 mb-3';
-    out.textContent = 'Indica dos puntos haciendo clic en el mapa o usando las cajas de búsqueda.';
+    out.className = "alert alert-info py-2 mb-3";
+    out.textContent =
+      "Indica dos puntos haciendo clic en el mapa o usando las cajas de búsqueda.";
   }
-  
-  const inpA = document.getElementById('placeA');
-  const inpB = document.getElementById('placeB');
-  if (inpA) inpA.value = '';
-  if (inpB) inpB.value = '';
+
+  const inpA = document.getElementById("placeA");
+  const inpB = document.getElementById("placeB");
+  if (inpA) inpA.value = "";
+  if (inpB) inpB.value = "";
 
   fitDistanceBounds();
 }
@@ -907,26 +1001,26 @@ function initMap() {
   }
 
   // Inicializar mapa de ruta cuando se expande su acordeón
-  const routeCollapse = document.getElementById('collapseFive');
+  const routeCollapse = document.getElementById("collapseFive");
   if (routeCollapse) {
-    routeCollapse.addEventListener('shown.bs.collapse', () => {
+    routeCollapse.addEventListener("shown.bs.collapse", () => {
       initRouteMap();
     });
     // Si ya está abierto
-    if (routeCollapse.classList.contains('show')) {
+    if (routeCollapse.classList.contains("show")) {
       initRouteMap();
     }
   }
 
   // Inicializar otros mapas
-  const distanceCollapse = document.getElementById('mapsCollapseFour');
+  const distanceCollapse = document.getElementById("mapsCollapseFour");
   if (distanceCollapse) {
-    distanceCollapse.addEventListener('shown.bs.collapse', () => {
+    distanceCollapse.addEventListener("shown.bs.collapse", () => {
       initDistanceMap();
     });
   }
 
-  console.log('Todos los mapas configurados');
+  console.log("Todos los mapas configurados");
 }
 
 // Inicializa cuando la página cargue

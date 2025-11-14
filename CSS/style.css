@@ -1,0 +1,39 @@
+#cuadroClick {
+  background-color: lightgray;
+  width: 200px;
+  text-align: center;
+}
+
+#cuadroDblClick {
+  background-color: lightblue;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cuadroHover {
+  background-color: #dcdcdc;
+  width: 220px;
+  height: 150px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+#map-error-handling {
+  height: 350px;
+  background-color: #e9ecef;
+}
+
+#inputKeyup {
+  width: 250px;
+}
+
+#nombreSubmit {
+  width: 250px;
+}

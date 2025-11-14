@@ -396,7 +396,9 @@ $(".Ejemplo1B").css("color", "black");
                         aria-expanded="true"
                         aria-controls="collapseOne"
                       >
-                        <strong>Click</strong>
+                        <strong
+                          >1. Evento click — Activar acción con un clic</strong
+                        >
                       </button>
                     </h2>
                     <div
@@ -407,18 +409,36 @@ $(".Ejemplo1B").css("color", "black");
                     >
                       <div class="accordion-body">
                         <p class="text-muted">
-                          El objeto Geolocation permite obtener la ubicación
-                          geográfica del dispositivo del usuario.
+                          Se ejecuta cuando el usuario hace clic sobre un
+                          elemento, como un botón, imagen, enlace o cualquier
+                          etiqueta interactiva.
                         </p>
                         <div class="card bg-light mb-3">
                           <div class="card-header bg-secondary text-white">
-                            <strong
-                              >Código: Referencia a Objeto Geolocation</strong
-                            >
+                            <strong>Código - Referencia de Ejemplo</strong>
                           </div>
                           <div class="card-body">
                             <pre><code class="language-javascript">
-                          // Aquí va el código de la función de Geolocation
+// HTML
+&lt;button id=&quot;btnClick&quot;&gt;Click aquí&lt;/button&gt;
+&lt;button id=&quot;btnReset&quot;&gt;Reiniciar&lt;/button&gt;
+
+&lt;div id=&quot;cuadroClick&quot; style=&quot;background-color: lightgray;&quot;&gt;
+  Esperando clic...
+&lt;/div&gt;
+
+// jQuery
+$("#btnClick").click(function () {
+  $("#cuadroClick")
+    .text("¡Hiciste clic!")
+    .css("background-color", "lightgreen");
+});
+
+$("#btnReset").click(function () {
+  $("#cuadroClick")
+    .text("Esperando clic...")
+    .css("background-color", "lightgray");
+});
                           </code></pre>
                           </div>
                         </div>
@@ -426,7 +446,7 @@ $(".Ejemplo1B").css("color", "black");
                         <!-- Titulo -->
                         <div class="card mt-3">
                           <div class="card-header bg-dark text-white">
-                            <strong>Ejemplo Visual - Mapa Geolocation</strong>
+                            <strong>Ejemplo Visual - Evento click</strong>
                           </div>
                           <div class="card-body">
                             <div
@@ -435,12 +455,28 @@ $(".Ejemplo1B").css("color", "black");
                             >
                               <!-- Pizarra -->
                               <div
+                                style="flex-direction: column"
                                 class="d-flex align-items-center justify-content-center h-100"
                               >
-                                <p class="text-muted">
-                                  Mapa de demostración de Geolocation se cargará
-                                  aquí
-                                </p>
+                                <button
+                                  id="btnClick"
+                                  class="btn btn-primary mt-3 me-2"
+                                >
+                                  Click aquí
+                                </button>
+                                <button
+                                  id="btnReset"
+                                  class="btn btn-secondary mt-3 me-2"
+                                >
+                                  Reiniciar
+                                </button>
+
+                                <div
+                                  id="cuadroClick"
+                                  class="mt-3 p-4 border rounded"
+                                >
+                                  Esperando clic...
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -461,8 +497,8 @@ $(".Ejemplo1B").css("color", "black");
                         aria-controls="collapseTwo"
                       >
                         <strong
-                          >Ejemplo 2: Ocultar o mostrar un elemento</strong
-                        >
+                          >2. Evento dblclick — Detectar doble clic del usuario
+                        </strong>
                       </button>
                     </h2>
                     <div
@@ -473,16 +509,41 @@ $(".Ejemplo1B").css("color", "black");
                     >
                       <div class="accordion-body">
                         <p class="text-muted">
-                          Utiliza el método getCurrentPosition() para obtener
-                          las coordenadas actuales del usuario.
+                          Se dispara cuando el usuario realiza dos clics
+                          seguidos sobre un elemento, útil para acciones rápidas
+                          o avanzadas.
                         </p>
                         <div class="card bg-light mb-3">
                           <div class="card-header bg-secondary text-white">
-                            <strong>Código: Obtener la posición</strong>
+                            <strong>Código - Referencia de Ejemplo</strong>
                           </div>
                           <div class="card-body">
                             <pre><code class="language-javascript">
-                          // Aquí va el código para obtener la posición
+$("#cuadroDblClick").dblclick(function () {
+  const cuadro = $(this);
+
+  if (cuadro.hasClass("agrandado")) {
+    // Volver al tamaño original
+    cuadro
+      .removeClass("agrandado")
+      .css({
+        "background-color": "lightblue",
+        width: "150px",
+        height: "150px"
+      })
+      .text("Doble clic aquí");
+  } else {
+    // Agrandar
+    cuadro
+      .addClass("agrandado")
+      .css({
+        "background-color": "orange",
+        width: "250px",
+        height: "250px"
+      })
+      .text("¡Doble clic detectado!");
+  }
+});
                           </code></pre>
                           </div>
                         </div>
@@ -490,7 +551,7 @@ $(".Ejemplo1B").css("color", "black");
                         <!-- Titulo -->
                         <div class="card mt-3">
                           <div class="card-header bg-dark text-white">
-                            <strong>Ejemplo Visual - Obtener Posición</strong>
+                            <strong>Ejemplo Visual - Evento doble click</strong>
                           </div>
                           <div class="card-body">
                             <div
@@ -502,7 +563,12 @@ $(".Ejemplo1B").css("color", "black");
                               <div
                                 class="d-flex align-items-center justify-content-center h-100"
                               >
-                                <p class="text-muted">Pizarra</p>
+                                <div
+                                  id="cuadroDblClick"
+                                  class="p-4 border rounded"
+                                >
+                                  Doble clic aquí
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -522,7 +588,10 @@ $(".Ejemplo1B").css("color", "black");
                         aria-expanded="false"
                         aria-controls="collapseThree"
                       >
-                        <strong>Ejemplo 3: Cambiar estilo con jQuery</strong>
+                        <strong
+                          >3. Eventos mouseover y mouseout — Reacción al pasar o
+                          quitar el mouse
+                        </strong>
                       </button>
                     </h2>
                     <div
@@ -533,16 +602,29 @@ $(".Ejemplo1B").css("color", "black");
                     >
                       <div class="accordion-body">
                         <p class="text-muted">
-                          Implementa callbacks de error para manejar situaciones
-                          donde la geolocalización falla.
+                          Mouseover ocurre cuando el puntero entra al área del
+                          elemento, y mouseout cuando sale. Son ideales para
+                          efectos visuales, menús o resaltar elementos.
                         </p>
                         <div class="card bg-light mb-3">
                           <div class="card-header bg-secondary text-white">
-                            <strong>Código: Manejo de errores</strong>
+                            <strong>Código - Referencia de Ejemplo</strong>
                           </div>
                           <div class="card-body">
                             <pre><code class="language-javascript">
-                          // Aquí va el código para el manejo de errores
+// Evento mouseover: cuando el mouse entra
+$("#cuadroHover").mouseover(function () {
+  $(this)
+    .css("background-color", "#b3e5fc")
+    .text("Mouse encima 👀");
+});
+
+// Evento mouseout: cuando el mouse sale
+$("#cuadroHover").mouseout(function () {
+  $(this)
+    .css("background-color", "#dcdcdc")
+    .text("Pasa el mouse aquí");
+});
                           </code></pre>
                           </div>
                         </div>
@@ -550,22 +632,22 @@ $(".Ejemplo1B").css("color", "black");
                         <!-- Titulo -->
                         <div class="card mt-3">
                           <div class="card-header bg-dark text-white">
-                            <strong>Ejemplo Visual - Manejo de Errores</strong>
+                            <strong
+                              >Ejemplo Visual - Mouseover y mouseout</strong
+                            >
                           </div>
                           <div class="card-body">
-                            <div
-                              id="map-error-handling"
-                              style="height: 350px; background-color: #e9ecef"
-                              class="border rounded"
-                            >
+                            <div id="map-error-handling" class="border rounded">
                               <!-- Pizarra -->
                               <div
                                 class="d-flex align-items-center justify-content-center h-100"
                               >
-                                <p class="text-muted">
-                                  Mapa de demostración de manejo de errores se
-                                  cargará aquí
-                                </p>
+                                <div
+                                  id="cuadroHover"
+                                  class="p-4 border rounded"
+                                >
+                                  Pasa el mouse aquí
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -585,7 +667,9 @@ $(".Ejemplo1B").css("color", "black");
                         aria-expanded="false"
                         aria-controls="collapseFour"
                       >
-                        <strong>Ejemplo 4: Animación</strong>
+                        <strong
+                          >4. Evento keyup — Detectar cuando se suelta una tecla
+                        </strong>
                       </button>
                     </h2>
                     <div
@@ -596,63 +680,27 @@ $(".Ejemplo1B").css("color", "black");
                     >
                       <div class="accordion-body">
                         <p class="text-muted">
-                          Integración con Google Maps JavaScript API para
-                          visualizar la ubicación en un mapa interactivo.
+                          Se ejecuta cada vez que el usuario libera una tecla
+                          dentro de un input, textarea o cualquier campo
+                          editable. Útil para validaciones en tiempo real o
+                          búsquedas dinámicas.
                         </p>
-
-                        <h5 class="text-secondary mt-3">
-                          Librería Google Maps JavaScript API
-                        </h5>
                         <div class="card bg-light mb-3">
-                          <div class="card-header bg-info text-white">
-                            <strong
-                              >Código: Recuperando la posición actual</strong
-                            >
+                          <div class="card-header bg-secondary text-white">
+                            <strong>Código - Referencia de Ejemplo</strong>
                           </div>
                           <div class="card-body">
                             <pre><code class="language-javascript">
-                          // Aquí va el código para recuperar la posición actual con Google Maps
-                          </code></pre>
-                          </div>
-                        </div>
+// HTML
+&lt;input type=&quot;text&quot; id=&quot;inputKeyup&quot; placeholder=&quot;Escribe algo...&quot; class=&quot;form-control&quot; style=&quot;width: 250px;&quot;&gt;
+&lt;p id=&quot;mensajeKeyup&quot; class=&quot;mt-3&quot;&gt;Número de caracteres: 0&lt;/p&gt;
 
-                        <!-- Titulo -->
-                        <div class="card mt-3 mb-4">
-                          <div class="card-header bg-dark text-white">
-                            <strong
-                              >Ejemplo Visual - Recuperando Posición
-                              Actual</strong
-                            >
-                          </div>
-                          <div class="card-body">
-                            <div
-                              id="map-current-position"
-                              style="height: 350px; background-color: #e9ecef"
-                              class="border rounded"
-                            >
-                              <!-- Pizarra -->
-                              <div
-                                class="d-flex align-items-center justify-content-center h-100"
-                              >
-                                <p class="text-muted">
-                                  Mapa de demostración de posición actual se
-                                  cargará aquí
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+// jQuery
+$("#inputKeyup").keyup(function () {
+  const texto = $(this).val();
+  $("#mensajeKeyup").text("Número de caracteres: " + texto.length);
+});
 
-                        <h5 class="text-secondary mt-3">
-                          Cálculo de distancias entre puntos
-                        </h5>
-                        <div class="card bg-light mb-3">
-                          <div class="card-header bg-info text-white">
-                            <strong>Código: Cálculo de distancias</strong>
-                          </div>
-                          <div class="card-body">
-                            <pre><code class="language-javascript">
-                          // Aquí va el código para calcular distancias entre puntos
                           </code></pre>
                           </div>
                         </div>
@@ -660,13 +708,11 @@ $(".Ejemplo1B").css("color", "black");
                         <!-- Titulo -->
                         <div class="card mt-3">
                           <div class="card-header bg-dark text-white">
-                            <strong
-                              >Ejemplo Visual - Cálculo de Distancias</strong
-                            >
+                            <strong>Ejemplo Visual - Keyup</strong>
                           </div>
                           <div class="card-body">
                             <div
-                              id="map-jquery"
+                              id="map-error-handling"
                               style="height: 350px; background-color: #e9ecef"
                               class="border rounded"
                             >
@@ -674,10 +720,19 @@ $(".Ejemplo1B").css("color", "black");
                               <div
                                 class="d-flex align-items-center justify-content-center h-100"
                               >
-                                <p class="text-muted">
-                                  Mapa de demostración de cálculo de distancias
-                                  se cargará aquí
-                                </p>
+                                <div
+                                  class="d-flex flex-column align-items-center justify-content-center"
+                                >
+                                  <input
+                                    type="text"
+                                    id="inputKeyup"
+                                    placeholder="Escribe algo..."
+                                    class="form-control"
+                                  />
+                                  <p id="mensajeKeyup" class="mt-3">
+                                    Número de caracteres: 0
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -693,41 +748,70 @@ $(".Ejemplo1B").css("color", "black");
                         class="accordion-button collapsed"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#collapseFive-j"
+                        data-bs-target="#collapseFive"
                         aria-expanded="false"
-                        aria-controls="collapseFive-j"
+                        aria-controls="collapseFive"
                       >
-                        <strong>Ejemplo 5: X Cosa</strong>
+                        <strong
+                          >5. Evento submit — Envío de un formulario
+                        </strong>
                       </button>
                     </h2>
                     <div
-                      id="collapseFive-j"
+                      id="collapseFive"
                       class="accordion-collapse collapse"
                       aria-labelledby="headingFive"
                       data-bs-parent="#JqueryAccordion"
                     >
                       <div class="accordion-body">
-                        <p class="text-muted">Aquí va Descripción</p>
-
+                        <p class="text-muted">
+                          Este evento se activa cuando un formulario es enviado,
+                          ya sea con un botón o la tecla Enter. Permite validar
+                          datos antes de que se procese el envío.
+                        </p>
                         <div class="card bg-light mb-3">
-                          <div class="card-header bg-info text-white">
-                            <strong>Código: Referencia</strong>
+                          <div class="card-header bg-secondary text-white">
+                            <strong>Código - Referencia de Ejemplo</strong>
                           </div>
                           <div class="card-body">
                             <pre><code class="language-javascript">
-                              // Aquí va el código 
-                            </code></pre>
+// HTML
+&lt;form id=&quot;formSubmit&quot; class=&quot;d-flex flex-column align-items-center&quot;&gt;
+  &lt;input type=&quot;text&quot; id=&quot;nombreSubmit&quot; placeholder=&quot;Escribe tu nombre&quot; class=&quot;form-control mb-3&quot; style=&quot;width: 250px;&quot; required&gt;
+  &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Enviar&lt;/button&gt;
+  &lt;p id=&quot;mensajeSubmit&quot; class=&quot;mt-3 text-success&quot;&gt;&lt;/p&gt;
+&lt;/form&gt;
+
+// jQuery
+$("#formSubmit").submit(function (e) {
+  e.preventDefault(); // Previene el envío real
+
+  const nombre = $("#nombreSubmit").val();
+  if (nombre.trim() === "") {
+    $("#mensajeSubmit")
+      .text("Por favor, ingresa tu nombre")
+      .css("color", "red");
+  } else {
+    $("#mensajeSubmit")
+      .text("¡Formulario enviado correctamente, " + nombre + "!")
+      .css("color", "green");
+
+    $(this)[0].reset(); // Opcional: reinicia el formulario
+  }
+});
+
+                          </code></pre>
                           </div>
                         </div>
 
                         <!-- Titulo -->
-                        <div class="card mt-3 mb-4">
+                        <div class="card mt-3">
                           <div class="card-header bg-dark text-white">
-                            <strong>Ejemplo Visual</strong>
+                            <strong>Ejemplo Visual - Submit</strong>
                           </div>
                           <div class="card-body">
                             <div
-                              id="map-current-position-five"
+                              id="map-error-handling"
                               style="height: 350px; background-color: #e9ecef"
                               class="border rounded"
                             >
@@ -735,7 +819,25 @@ $(".Ejemplo1B").css("color", "black");
                               <div
                                 class="d-flex align-items-center justify-content-center h-100"
                               >
-                                <p class="text-muted">Aqui va lo mostrado</p>
+                                <form
+                                  id="formSubmit"
+                                  class="d-flex flex-column align-items-center"
+                                >
+                                  <input
+                                    type="text"
+                                    id="nombreSubmit"
+                                    placeholder="Escribe tu nombre"
+                                    class="form-control mb-3"
+                                    required
+                                  />
+                                  <button type="submit" class="btn btn-primary">
+                                    Enviar
+                                  </button>
+                                  <p
+                                    id="mensajeSubmit"
+                                    class="mt-3 text-success"
+                                  ></p>
+                                </form>
                               </div>
                             </div>
                           </div>
