@@ -326,7 +326,6 @@ $("button");
                     </div>
                   </div>
 
-                  <!-- Mapa de ejemplo para Geolocation -->
                 
     </div>
   </div>
@@ -426,7 +425,6 @@ $("section p:last-child):
                     </div>
                   </div>
 
-                  <!-- Mapa de ejemplo para Geolocation -->
                   
                </div>
              </div>
@@ -523,41 +521,1123 @@ $("div[data-role='admin']");
               >
                 <h3 class="mb-4">Acceso y manipulación del DOM</h3>
                 <div class="accordion-body">
+                  
+                  
                   <p class="text-muted">Descripción de lo explicado</p>
-                  <div class="card bg-light mb-3">
-                    <div class="card-header bg-secondary text-white">
-                      <strong>Código: Referencia</strong>
-                    </div>
-                    <div class="card-body">
-                      <pre><code class="language-javascript">
-                          // Aquí va el código de Referencia
-                          </code></pre>
-                    </div>
-                  </div>
+                   <div class="accordion" id="accordionExample">
 
-                  <!-- Ejemplo -->
-                  <div class="card mt-3">
-                    <div class="card-header bg-dark text-white">
-                      <strong>Ejemplo Visual - Funciones</strong>
+                    <!--DOM 1-->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+       <h5> Inserción en el DOM</h5>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>La inserción al DOM consiste en añadir nuevos nodos o contenido HTML en posiciones específicas respecto a un elemento seleccionado. 
+          jQuery facilita esto mediante métodos simples que evitan manipulación manual del DOM.</p>
+       <strong><p>Existen 3 Tipos:</p></strong>
+        <ul>
+          <li>Inside(dentro)</li>
+          <li>Outside(fuera)</li>
+          <li>Around(Alrededor)</li>
+        </ul>
+
+        
+ <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+       <h5> Inserción Dentro del elemento</h5>
+      </button>
+    </h2>
+    <div id="collapseOne1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>Son funciones que permiten añadir nuevos nodos o contenido HTML dentro de un elemento seleccionado, sin reemplazar su contenido actual</p>
+       <strong><p>Ejemplos:</p></strong>
+        <ul>
+          <li>.append()</li>
+          <li>.prepend()</li>
+        </ul>
+<br>
+        <h4>.Append()</h4>
+          <div class="card-header bg-secondary text-white">
+            <strong>Código: Referencia</strong>
+          </div>
+          <div class="card-body border">
+            <pre><code class="language-html">
+          
+//Contenedor a modificar
+&lt;div class="card-body"&gt;
+    &lt;p&gt;El método &lt;code&gt;.append()&lt;/code&gt; inserta contenido al &lt;strong&gt;final&lt;/strong&gt; del elemento seleccionado.&lt;/p&gt;
+
+    &lt;!-- Contenedor donde se agregará contenido --&gt;
+    &lt;div id="contenedor1" class="border border-dark p-3 mb-3"&gt;
+      &lt;p&gt;Contenido inicial&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button id="btnAppend" class="btn btn-success"&gt;Agregar con .append()&lt;/button&gt;
+&lt;/div&gt;
+
+
+//Funcion Append
+$(document).ready(function(){
+  $("#btnAppend").click(function(){
+    $("#contenedor1").append("&amp;lt;p class='text-success'&amp;gt;Texto agregado al final con .append()&amp;lt;/p&amp;gt;");
+  });
+});
+
+           </code></pre>
+          </div>
+          
+<div class="card mb-3">
+  <div class="card-header bg-primary text-white">
+    Ejemplo Visual: .append()
+  </div>
+  <div class="card-body">
+    <p>El método <code>.append()</code> inserta contenido al <strong>final</strong> del elemento seleccionado.</p>
+
+    <!-- Contenedor donde se agregará contenido -->
+    <div id="contenedor1" class="border border-dark p-3 mb-3">
+      <p>Contenido inicial</p>
+    </div>
+
+    <!-- Botón para ejecutar append -->
+    <button id="btnAppend" class="btn btn-success">Agregar con .append()</button>
+  </div>
+</div>
+
+
+
+
+
+
+          
+            <h4>.prepend( )</h4>
+             <div class="card-header bg-secondary text-white ">
+            <strong>Código: Referencia</strong>
+             </div>
+          <div class="card-body border">
+            <pre><code class="language-html">
+
+&lt;div class="card-body"&gt;
+    &lt;p&gt;El método &lt;code&gt;.prepend()&lt;/code&gt; inserta contenido al &lt;strong&gt;inicio&lt;/strong&gt; del elemento seleccionado.&lt;/p&gt;
+
+    &lt;!-- Contenedor donde se agregará contenido --&gt;
+    &lt;div id="contenedor2" class="border border-dark p-3 mb-3"&gt;
+      &lt;p&gt;Contenido inicial&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button id="btnPrepend" class="btn btn-primary"&gt;Agregar con .prepend()&lt;/button&gt;
+&lt;/div&gt;
+
+
+
+//funcion con prepend()
+
+$(document).ready(function(){
+  $("#btnPrepend").click(function(){
+    $("#contenedor2").prepend("&amp;lt;p class='text-primary'&amp;gt;Texto agregado al inicio con .prepend()&amp;lt;/p&amp;gt;");
+  });
+});
+
+
+ </code></pre>
+         
+          
+<div class="card mb-3">
+  <div class="card-header bg-info text-white">
+    Ejemplo Visual: .prepend()
+  </div>
+  <div class="card-body">
+    <p>El método <code>.prepend()</code> inserta contenido al <strong>inicio</strong> del elemento seleccionado.</p>
+
+    <!-- Contenedor donde se agregará contenido -->
+    <div id="contenedor2" class="border border-dark p-3 mb-3">
+      <p>Contenido inicial</p>
+    </div>
+
+    <!-- Botón para ejecutar prepend -->
+    <button id="btnPrepend" class="btn btn-primary">Agregar con .prepend()</button>
+  </div>
+</div>
+ </div>
+          </div>
+          </div>
+          
+          </div>
+
+
+
+
+
+
+<div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo1">
+       <h5> Inserción Fuera del elemento</h5>
+      </button>
+    </h2>
+    <div id="collapseTwo1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>Son funciones que permiten añadir nuevos nodos o contenido HTML afuera de un elemento seleccionado, sin reemplazar su contenido actual</p>
+       <strong><p>Ejemplos:</p></strong>
+        <ul>
+          <li>.after()</li>
+          <li>.before()</li>
+        </ul>
+<br>
+        <h4>.after()</h4>
+          <div class="card-header bg-secondary text-white">
+            <strong>Código: Referencia</strong>
+          </div>
+          <div class="card-body border">
+            <pre><code class="language-html">
+          
+
+&lt;div class="card-body"&gt;
+    &lt;p&gt;El método &lt;code&gt;.after()&lt;/code&gt; inserta contenido &lt;strong&gt;después&lt;/strong&gt; del elemento seleccionado.&lt;/p&gt;
+
+    &lt;!-- Contenedor donde se agregará contenido --&gt;
+    &lt;div id="contenedor3" class="border border-dark p-3 mb-3"&gt;
+      &lt;p&gt;Contenido inicial&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button id="btnAfter" class="btn btn-warning"&gt;Agregar con .after()&lt;/button&gt;
+&lt;/div&gt;
+
+
+//funcion jquery con after()
+
+$(document).ready(function(){
+  $("#btnAfter").click(function(){
+    $("#contenedor3").after("&amp;lt;p class='text-warning'&amp;gt;Texto agregado después con .after()&amp;lt;/p&amp;gt;");
+  });
+});
+           </code></pre>
+          </div>
+          
+
+
+<div class="card mb-3">
+  <div class="card-header bg-primary text-white">
+    Ejemplo Visual: .after()
+  </div>
+  <div class="card-body">
+    <p>El método <code>.after()</code> inserta contenido <strong>despues</strong> del elemento seleccionado.</p>
+
+    <!-- Contenedor donde se agregará contenido -->
+    <div id="contenedor3" class="border border-dark p-3 mb-3">
+      <p>Contenido inicial</p>
+    </div>
+
+    <!-- Botón para ejecutar append -->
+    <button id="btnAfter" class="btn btn-warning">Agregar con.after()</button>
+  </div>
+</div>
+
+
+
+
+
+
+          
+            <h4>.before( )</h4>
+             <div class="card-header bg-secondary text-white ">
+            <strong>Código: Referencia</strong>
+             </div>
+          <div class="card-body border">
+            <pre><code class="language-html">
+
+&lt;div class="card-body"&gt;
+    &lt;p&gt;El método &lt;code&gt;.prepend()&lt;/code&gt; inserta contenido al &lt;strong&gt;inicio&lt;/strong&gt; del elemento seleccionado.&lt;/p&gt;
+
+    &lt;!-- Contenedor donde se agregará contenido --&gt;
+    &lt;div id="contenedor2" class="border border-dark p-3 mb-3"&gt;
+      &lt;p&gt;Contenido inicial&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;button id="btnPrepend" class="btn btn-primary"&gt;Agregar con .prepend()&lt;/button&gt;
+&lt;/div&gt;
+
+
+
+//funcion con prepend()
+
+$(document).ready(function(){
+  $("#btnPrepend").click(function(){
+    $("#contenedor2").prepend("&amp;lt;p class='text-primary'&amp;gt;Texto agregado al inicio con .prepend()&amp;lt;/p&amp;gt;");
+  });
+});
+
+
+ </code></pre>
+         
+          
+<div class="card mb-3">
+  <div class="card-header bg-info text-white">
+    Ejemplo Visual: .before()
+  </div>
+  <div class="card-body">
+    <p>El método <code>.before()</code> inserta contenido <strong>antes</strong> del elemento seleccionado.</p>
+
+    <!-- Contenedor donde se agregará contenido -->
+    <div id="contenedor4" class="border border-dark p-3 mb-3">
+      <p>Contenido inicial</p>
+    </div>
+
+    <!-- Botón para ejecutar prepend -->
+    <button id="btnbefore" class="btn btn-primary">Agregar con .before()</button>
+  </div>
+</div>
+ </div>
+          </div>
+          </div>
+          </div>
+
+        </div>
+          </div>
+          </div>
+
+
+                    <!--DOM 2-->
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <h5> Metodos de Manipulación estructural</h5>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <p>Manipulación estructural se refiere a los métodos que permiten envolver, deshacer envolturas o modificar la
+                          estructura del DOM alrededor de los elementos seleccionados.</p>
+                        <strong>
+                          <p>Ejemplos:</p>
+                        </strong>
+                        <ul>
+                          <li>.wrap()</li>
+                          <li>.unwrap()</li>
+                          <li>.wrapinner()</li>
+                        </ul>
+                        <br>
+                        <h4>.wrap() y .unwrap()</h4>
+                        <div class="card-header bg-secondary text-white">
+                  
+                          <strong>Código: Referencia</strong>
+                        </div>
+                        <div class="card-body">
+                          <pre><code class="language-javaScript">
+                                                                                                      
+                                    &lt;div class="card-body"&gt;
+                                        &lt;h5&gt;El método &lt;code&gt;.wrap()&lt;/code&gt; envuelve cada elemento seleccionado con una estructura HTML.&lt;/h5&gt;
+                                    
+                                        &lt;!-- Elementos a envolver --&gt;
+                                        &lt;p class="mb-2"&gt;Texto 1&lt;/p&gt;
+                                        &lt;p class="mb-2"&gt;Texto 2&lt;/p&gt;
+                                        &lt;p class="mb-2"&gt;Texto 3&lt;/p&gt;
+                                    
+                                        &lt;!-- Botones --&gt;
+                                        &lt;button id="btnWrap" class="btn btn-info me-2"&gt;Aplicar .wrap()&lt;/button&gt;
+                                        &lt;button id="btnUnwrap" class="btn btn-danger"&gt;Revertir .unwrap()&lt;/button&gt;
+                                    &lt;/div&gt;
+                                    
+                                    
+                                    $(document).ready(function (){
+                                        $("#btnWrap").click(function () {
+                                            $("p.mb-2").wrap("&lt;"div class='border border-primary p-2 mb-2'/div"v&gt;");
+                                        });
+                                    
+                                        $("#btnUnwrap").click(function () {
+                                            $("p.mb-2").unwrap();
+                                        });
+                                      }):
+                                    
+                               </code></pre>
+                        </div>
+                        <div class="card mb-3">
+                          <div class="card-header bg-primary text-white">
+                            Ejemplo Visual: .wrap()
+                          </div>
+                  
+                          <div class="card-body">
+                            <h5>El método <code>.wrap()</code> envuelve cada elemento seleccionado con una estructura HTML.</h5>
+                  
+                            <!-- Elementos a envolver -->
+                            <p class="mb-2">Texto 1</p>
+                            <p class="mb-2">Texto 2</p>
+                            <p class="mb-2">Texto 3</p>
+                  
+                            <!-- Botones -->
+                            <button id="btnWrap" class="btn btn-info me-2">Aplicar .wrap()</button>
+                            <button id="btnUnwrap" class="btn btn-danger">Revertir .unwrap()</button>
+                  
+                          </div>
+                        </div>
+                        <br>
+                        <h4>.wrapinner()</h4>
+                        <div class="card-header bg-secondary text-white">
+                        
+                          <strong>Código: Referencia</strong>
+                        </div>
+                        <div class="card-body">
+                          <pre><code class="language-javaScript">
+                                                                                                                              
+                                                            
+                        &lt;div class="card-body"&gt;
+                            &lt;h5&gt;El método &lt;code&gt;.wrapInner()&lt;/code&gt; envuelve el contenido interno de cada elemento seleccionado.&lt;/h5&gt;
+                        
+                            &lt;!-- Elementos a envolver --&gt;
+                            &lt;div class="caja mb-2"&gt;Texto 1&lt;/div&gt;
+                            &lt;div class="caja mb-2"&gt;Texto 2&lt;/div&gt;
+                            &lt;div class="caja mb-2"&gt;Texto 3&lt;/div&gt;
+                        
+                            &lt;!-- Botones --&gt;
+                            &lt;button id="btnWrapInner" class="btn btn-info me-2"&gt;Aplicar .wrapInner()&lt;/button&gt;
+                            &lt;button id="btnUnwrapInner" class="btn btn-danger"&gt;Revertir .unwrap()&lt;/button&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+                        &lt;script&gt;
+                        $(document).ready(function () {
+                            // Aplicar .wrapInner()
+                            $("#btnWrapInner").click(function () {
+                                $(".caja").wrapInner("&lt;span class='EjemploInner'&gt;&lt;/span&gt;");
+                            });
+                        
+                            // Revertir .unwrap()
+                            $("#btnUnwrapInner").click(function () {
+                                $(".EjemploInner").contents().unwrap();
+                            });
+                        
+                            // Estilos dinámicos
+                            $(".EjemploInner").css({
+                                "background-color": "yellow",
+                                "font-weight": "bold",
+                                "padding": "5px"
+                            });
+                        });
+                        
+                        
+                                                            
+                                                                                    </code></pre>
+                        </div>
+                        <div class="card mb-3">
+                          <div class="card-header bg-primary text-white">
+                            Ejemplo Visual: .wrapInner()
+                          </div>
+                        
+                          <div class="card-body">
+                            <h5>El método <code>.wrapInner()</code> envuelve el contenido interno de cada elemento seleccionado.</h5>
+                            <!-- Elementos a envolver -->
+                        
+                        
+                            <!-- Elementos a envolver -->
+                            <div class="caja mb-2">Texto 1</div>
+                            <div class="caja mb-2">Texto 2</div>
+                            <div class="caja mb-2">Texto 3</div>
+                        
+                            <!-- Botones -->
+                            <button id="btnWrapInner" class="btn btn-info me-2">Aplicar .wrapInner()</button>
+                            <button id="btnUnwrapInner" class="btn btn-danger">Revertir .unwrap()</button>
+                        
+                          </div>
+                        </div>
+                        
+                        </div>
+                        
+                        
+                        </div>
+                        </div>
+
+
+                    <!--DOM 3-->
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                      aria-expanded="true" aria-controls="collapseThree">
+                      <h5> Metodos de Eliminación en el DOM</h5>
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p> son funciones que permiten remover elementos o contenido del árbol DOM usando JavaScript o jQuery. Su objetivo
+                        es modificar la estructura eliminando nodos, atributos o contenido.</p>
+                      <br>
+                      <h4>.remove()</h4>
+                      <div class="card-header bg-secondary text-white">
+                
+                        <strong>Código: Referencia</strong>
+                      </div>
+                      <div class="card-body">
+                        <pre><code class="language-javaScript">
+                                                                                                                                                                                              
+                                                                                                                            
+                                                                                       
+                                                                &lt;div class="card-body"&gt;
+                                                                    &lt;h5&gt;El método &lt;code&gt;.remove()&lt;/code&gt; elimina el elemento seleccionado del DOM.&lt;/h5&gt;
+                                                                
+                                                                    &lt;p class="texto"&gt;Texto 1 &lt;button class="btnEliminar"&gt;X&lt;/button&gt;&lt;/p&gt;
+                                                                    &lt;p class="texto"&gt;Texto 2 &lt;button class="btnEliminar"&gt;X&lt;/button&gt;&lt;/p&gt;
+                                                                    &lt;p class="texto"&gt;Texto 3 &lt;button class="btnEliminar"&gt;X&lt;/button&gt;&lt;/p&gt;
+                                                                &lt;/div&gt;
+                                                                
+                                                                                        
+                                                                                       $(document).ready(function () {
+                                                                    // Cuando se hace clic en el botón X, elimina solo ese párrafo
+                                                                    $(".btnEliminar").click(function () {
+                                                                        $(this).parent().remove(); // Elimina el elemento padre del botón el p
+                                                                    });
+                                                                });
+                                                                                        
+                                                                        
+                                                                                                            
+                                                                                                                                    </code></pre>
+                      </div>
+                      <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                          Ejemplo Visual: .remove()
+                        </div>
+                
+                        <div class="card-body">
+                
+                          <h5>El método <code>.remove()</code> elimina el elemento seleccionado del DOM.</h5>
+                
+                
+                          <p class="texto">Texto 1 <button class="btnEliminar">X</button></p>
+                          <p class="texto">Texto 2 <button class="btnEliminar">X</button></p>
+                          <p class="texto">Texto 3 <button class="btnEliminar">X</button></p>
+                
+                
+                
+                        </div>
+                
+                      </div>
+                      <br>
+                      <h4>.empty()</h4>
+                      <div class="card-header bg-secondary text-white">
+                
+                        <strong>Código: Referencia</strong>
+                      </div>
+                      <div class="card-body">
+                        <pre><code class="language-javaScript">
+                                                                                                                                                                                              
+                                                                                                                            
+                                                              
+                &lt;div class="card-body"&gt;
+                    &lt;h5&gt;El método &lt;code&gt;.empty()&lt;/code&gt; elimina solo el contenido interno del elemento, pero mantiene el contenedor.&lt;/h5&gt;
+                
+                    &lt;!-- Contenedor --&gt;
+                    &lt;div id="contenedor" style="border:1px solid #ccc; padding:10px;"&gt;
+                        &lt;p&gt;Texto 1&lt;/p&gt;
+                        &lt;p&gt;Texto 2&lt;/p&gt;
+                        &lt;p&gt;Texto 3&lt;/p&gt;
+                    &lt;/div&gt;
+                
+                    &lt;!-- Botón --&gt;
+                    &lt;button id="btnEmpty" class="btn btn-warning mt-2"&gt;Vaciar contenedor&lt;/button&gt;
+                &lt;/div&gt;
+                
+                &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+                &lt;script&gt;
+                $(document).ready(function () {
+                    $("#btnEmpty").click(function () {
+                        $("#contenedor").empty(); // Elimina solo el contenido interno
+                    });
+                });
+                                   
+                                                                        
+                                                                                                            
+                                                                                                                                    </code></pre>
+                      </div>
+                      <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                          Ejemplo Visual: .empty()
+                        </div>
+                
+                        <div class="card-body">
+                
+                
+                          <h5>El método <code>.empty()</code> elimina solo el contenido interno del elemento, pero mantiene el
+                            contenedor.</h5>
+                
+                          <!-- Contenedor -->
+                
+                          <div id="contenedor" style="border:1px solid #ccc; padding:10px;">
+                            <p>Texto 1</p>
+                            <p>Texto 2</p>
+                            <p>Texto 3</p>
+                          </div>
+                
+                          <!-- Botón -->
+                          <button id="btnEmpty" class="btn btn-warning mt-2">Vaciar contenedor</button>
+                
+                
+                
+                        </div>
+                
+                      </div>
+                      <br>
+                      <h4>.detach()</h4>
+                      <div class="card-header bg-secondary text-white">
+                
+                        <strong>Código: Referencia</strong>
+                      </div>
+                      <div class="card-body">
+                        <pre><code class="language-javaScript">
+                                                                                                                                                                                              
+                                                                                                                            
+                                                              
+                
+                &lt;div class="card-body"&gt;
+                    &lt;h5&gt;El método &lt;code&gt;.detach()&lt;/code&gt; elimina el elemento del DOM pero conserva sus datos y eventos para reutilizarlo.&lt;/h5&gt;
+                
+                    &lt;!-- Elemento a eliminar --&gt;
+                    &lt;div id="contenedor" style="border:1px solid #ccc; padding:10px;"&gt;
+                        &lt;p&gt;Texto con evento&lt;/p&gt;
+                        &lt;button id="btnEvento"&gt;Haz clic&lt;/button&gt;
+                    &lt;/div&gt;
+                
+                    &lt;!-- Botones --&gt;
+                    &lt;button id="btnDetach" class="btn btn-danger mt-2"&gt;Eliminar con .detach()&lt;/button&gt;
+                    &lt;button id="btnReinsertar" class="btn btn-success mt-2"&gt;Reinsertar elemento&lt;/button&gt;
+                &lt;/div&gt;
+                
+                &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+                &lt;script&gt;
+                $(document).ready(function () {
+                    let elemento;
+                
+                    // Evento en el botón interno
+                    $("#btnEvento").click(function () {
+                        alert("¡Evento funcionando!");
+                    });
+                
+                    // Eliminar con .detach()
+                    $("#btnDetach").click(function () {
+                        elemento = $("#contenedor").detach(); // Se guarda el elemento con sus eventos
+                    });
+                
+                    // Reinsertar el elemento
+                    $("#btnReinsertar").click(function () {
+                        $(".card-body").append(elemento); // Se vuelve a agregar con el evento intacto
+                    });
+                });
+                                                                    
+                                        </code></pre>
+                      </div>
+                      <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                          Ejemplo Visual: .detach()
+                        </div>
+                
+                        <div class="card-body cuerp1">
+                
+                
+                          <h5>El método <code>.detach()</code> elimina solo el contenido interno del elemento, pero mantiene el
+                            contenedor.</h5>
+                
+                
+                          <!-- Elemento a eliminar -->
+                
+                
+                          <!-- Botones -->
+                          <button id="btnDetach" class="btn btn-danger mt-2">Eliminar con .detach()</button>
+                          <button id="btnReinsertar3" class="btn btn-success mt-2">Reinsertar elemento</button>
+                
+                
+                          <!-- Contenedor -->
+                          <div id="contenedor4" style="border:1px solid #ccc; padding:10px;">
+                            <p>Texto con evento</p>
+                            <button id="btnEvento">Haz clic</button>
+                          </div>
+                
+                
+                        </div>
+                
+                      </div>
                     </div>
-                    <div class="card-body">
-                      <div
-                        style="height: 350px; background-color: #e9ecef"
-                        class="border rounded"
-                      >
-                        <!-- Pizarra -->
-                        <div
-                          class="d-flex align-items-center justify-content-center h-100"
-                        >
-                          <p class="text-muted">
-                            En esta zona encontramos las cosas a presentar
-                          </p>
+                
+                
+                
+                  </div>
+                </div>
+
+                    <!--DOM 4-->
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                      aria-expanded="true" aria-controls="collapseFour">
+                      <h5> Manipulacion de Contenido</h5>
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>La manipulación de contenido en el DOM se refiere a cambiar, agregar o eliminar el contenido interno de los
+                        elementos HTML mediante JavaScript o jQuery.
+                        Esto permite actualizar la interfaz sin recargar la página..</p>
+                      <br>
+                      <h4>.html()</h4>
+                      <div class="card-header bg-secondary text-white">
+                
+                        <strong>Código: Referencia</strong>
+                      </div>
+                      <div class="card-body">
+                        <pre><code class="language-javaScript">
+                 
+                &lt;div class="card-body"&gt;
+                    &lt;h5&gt;El método &lt;code&gt;.html()&lt;/code&gt; obtiene o establece contenido HTML dentro de un elemento.&lt;/h5&gt;
+                
+                    &lt;!-- Elemento --&gt;
+                    &lt;div id="miDiv" style="border:1px solid #ccc; padding:10px;"&gt;
+                        &lt;p&gt;Texto original&lt;/p&gt;
+                    &lt;/div&gt;
+                
+                    &lt;!-- Botones --&gt;
+                    &lt;button id="btnCambiar" class="btn btn-info mt-2"&gt;Cambiar contenido&lt;/button&gt;
+                    &lt;button id="btnObtener" class="btn btn-secondary mt-2"&gt;Obtener contenido&lt;/button&gt;
+                &lt;/div&gt;
+                
+                &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+                &lt;script&gt;
+                $(document).ready(function () {
+                    // Cambiar contenido HTML
+                    $("#btnCambiar").click(function () {
+                        $("#miDiv").html("&lt;strong&gt;Nuevo contenido en negrita&lt;/strong&gt;");
+                    });
+                
+                    // Obtener contenido HTML
+                    $("#btnObtener").click(function () {
+                        alert($("#miDiv").html());
+                    });
+                });
+                                                                                                                                                                                                             
+                                                                             
+                                        </code></pre>
+                      </div>
+                      <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                          Ejemplo Visual: .html()
+                        </div>
+                
+                        <div class="card-body">
+                
+                
+                
+                          <h5>El método <code>.html()</code> obtiene o establece contenido HTML dentro de un elemento.</h5>
+                
+                          <!-- Elemento -->
+                          <div id="miDiv" style="border:1px solid #ccc; padding:10px;">
+                            <p>Texto original</p>
+                          </div>
+                
+                          <!-- Botones -->
+                          <button id="btnCambiar" class="btn btn-info mt-2">Cambiar contenido</button>
+                          <button id="btnObtener" class="btn btn-secondary mt-2">Obtener contenido</button>
+                
+                        </div>
+                      </div>
+                <br>
+                      <h4>.text()</h4>
+                      <div class="card-header bg-secondary text-white">
+                
+                        <strong>Código: Referencia</strong>
+                      </div>
+                      <div class="card-body">
+                        <pre><code class="language-javaScript">
+                 
+&lt;div class="card-body"&gt;
+    &lt;h5&gt;El método &lt;code&gt;.text()&lt;/code&gt; obtiene o establece contenido de texto plano (sin interpretar HTML).&lt;/h5&gt;
+
+    &lt;!-- Elemento --&gt;
+    &lt;div id="miDiv" style="border:1px solid #ccc; padding:10px;"&gt;
+        &lt;p&gt;Texto original&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Botones --&gt;
+    &lt;button id="btnCambiar" class="btn btn-info mt-2"&gt;Cambiar texto&lt;/button&gt;
+    &lt;button id="btnObtener" class="btn btn-secondary mt-2"&gt;Obtener texto&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function () {
+    // Cambiar texto (sin HTML)
+    $("#btnCambiar").click(function () {
+        $("#miDiv").text("Nuevo texto plano");
+    });
+
+    // Obtener texto
+    $("#btnObtener").click(function () {
+        alert($("#miDiv").text());
+    });
+});
+                                               
+                       </code></pre>
+                      </div>
+                      <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                          Ejemplo Visual: .text()
+                        </div>
+                
+                        <div class="card-body">
+                
+                          <h5>El método <code>.text()</code> obtiene o establece contenido de texto plano (sin interpretar HTML).</h5>
+                
+                          <!-- Elemento -->
+                          <div id="miDiv2" style="border:1px solid #ccc; padding:10px;">
+                            <p>Texto original</p>
+                          </div>
+                
+                          <!-- Botones -->
+                          <button id="btnCambiar5" class="btn btn-info mt-2">Cambiar texto</button>
+                          <button id="btnObtener5" class="btn btn-secondary mt-2">Obtener texto</button>
+                
+                
+                        </div>
+                      </div>
+                      <br>
+                <h4>.val()</h4>
+                      <div class="card-header bg-secondary text-white">
+                
+                        <strong>Código: Referencia</strong>
+                      </div>
+                      <div class="card-body">
+                        <pre><code class="language-javaScript">
+                 
+&lt;div class="card-body"&gt;
+    &lt;h5&gt;El método &lt;code&gt;.text()&lt;/code&gt; obtiene o establece contenido de texto plano (sin interpretar HTML).&lt;/h5&gt;
+
+    &lt;!-- Elemento --&gt;
+    &lt;div id="miDiv" style="border:1px solid #ccc; padding:10px;"&gt;
+        &lt;p&gt;Texto original&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Botones --&gt;
+    &lt;button id="btnCambiar" class="btn btn-info mt-2"&gt;Cambiar texto&lt;/button&gt;
+    &lt;button id="btnObtener" class="btn btn-secondary mt-2"&gt;Obtener texto&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function () {
+    // Cambiar texto (sin HTML)
+    $("#btnCambiar").click(function () {
+        $("#miDiv").text("Nuevo texto plano");
+    });
+
+    // Obtener texto
+    $("#btnObtener").click(function () {
+        alert($("#miDiv").text());
+    });
+});
+                                               
+                       </code></pre>
+                      </div>
+                      <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                          Ejemplo Visual: .text()
+                        </div>
+                
+                        <div class="card-body">
+                
+                          
+ <h5>El método <code>.val()</code> obtiene o establece el valor de elementos de formulario (input, select, textarea).</h5>
+
+    <!-- Campo de texto -->
+    <input type="text" id="miInput3" class="form-control mb-2" placeholder="Escribe algo aquí">
+
+    <!-- Botones -->
+    <button id="btnCambiar6" class="btn btn-info mt-2">Cambiar valor</button>
+    <button id="btnObtener6" class="btn btn-secondary mt-2">Obtener valor</button>
+
+                
+                
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
+
+                                      <!--DOM 5-->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+            aria-expanded="true" aria-controls="collapseFive">
+            <h5> Metodos Manipulacion de Atributo de clase</h5>
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>Los métodos de manipulación de atributos de clase en jQuery permiten agregar, eliminar o alternar clases CSS en
+              los elementos del DOM de forma dinámica.
+              Esto es muy útil para cambiar estilos sin modificar directamente el CSS.</p>
+            <br>
+            <h4>.addClass()</h4>
+            <div class="card-header bg-secondary text-white">
+              <strong>Código: Referencia</strong>
+            </div>
+            <div class="card-body">
+              <pre><code class="language-javascript">
+      
+      &lt;div class="card-body"&gt;
+          &lt;h5&gt;El método &lt;code&gt;.addClass()&lt;/code&gt; agrega una o varias clases CSS al elemento seleccionado.&lt;/h5&gt;
+      
+          &lt;!-- Elemento --&gt;
+          &lt;div id="miCaja" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
+              Caja
+          &lt;/div&gt;
+      
+          &lt;!-- Botón --&gt;
+          &lt;button id="btnAgregar" class="btn btn-primary mt-2"&gt;Agregar clase&lt;/button&gt;
+      &lt;/div&gt;
+      
+      &lt;style&gt;
+      .resaltado {
+          background-color: yellow;
+          color: red;
+          font-weight: bold;
+      }
+      &lt;/style&gt;
+      
+      &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+      &lt;script&gt;
+      $(document).ready(function () {
+          $("#btnAgregar").click(function () {
+              $("#miCaja").addClass("resaltado");
+          });
+      });
+                                  </code></pre>
+      
+      
+      
+            </div>
+            <div class="card mb-3">
+              <div class="card-header bg-primary text-white">
+                Ejemplo Visual: .addClass()
               </div>
+      
+              <div class="card-body">
+      
+      
+      
+                <h5>El método <code>.addClass()</code> agrega una o varias clases CSS al elemento seleccionado.</h5>
+      
+                <!-- Elemento -->
+                <div id="miCaja"
+                  style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;">
+                  Caja
+                </div>
+      
+                <!-- Botón -->
+                <button id="btnAgregar7" class="btn btn-primary mt-2">Agregar clase</button>
+      
+      
+      
+      
+              </div>
+            </div>
+      
+            <br>
+            <h4>.hasClass()</h4>
+            <div class="card-header bg-secondary text-white">
+              <strong>Código: Referencia</strong>
+            </div>
+            <div class="card-body">
+              <pre><code class="language-javascript">
+      
+      
+      lt;div class="card-body"&gt;
+          &lt;h5&gt;El método &lt;code&gt;.hasClass()&lt;/code&gt; verifica si el elemento tiene una clase específica (retorna true o false).&lt;/h5&gt;
+      
+          &lt;!-- Elemento --&gt;
+          &lt;div id="miCaja" class="activo" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
+              Caja
+          &lt;/div&gt;
+      
+          &lt;!-- Botón --&gt;
+          &lt;button id="btnVerificar" class="btn btn-primary mt-2"&gt;Verificar clase&lt;/button&gt;
+      &lt;/div&gt;
+      
+      &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+      &lt;script&gt;
+      $(document).ready(function () {
+          $("#btnVerificar").click(function () {
+              if ($("#miCaja").hasClass("activo")) {
+                  alert("La caja tiene la clase 'activo'");
+              } else {
+                  alert("La caja NO tiene la clase 'activo'");
+              }
+          });
+      });
+      
+                                  </code></pre>
+      
+      
+      
+            </div>
+            <div class="card mb-3">
+              <div class="card-header bg-primary text-white">
+                Ejemplo Visual: .hasClass()
+              </div>
+      
+              <div class="card-body">
+      
+      
+      
+      
+                <h5>El método <code>.hasClass()</code> verifica si el elemento tiene una clase específica (retorna true o
+                  false).</h5>
+      
+                <!-- Elemento -->
+                <div id="miCaja6" class="activo"
+                  style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;">
+                  Caja
+                </div>
+      
+                <!-- Botón -->
+                <button id="btnVerificar1" class="btn btn-primary mt-2">Verificar clase</button>
+      
+      
+      
+      
+              </div>
+            </div>
+            <br>
+            <h4>.removeClass()</h4>
+            <div class="card-header bg-secondary text-white">
+              <strong>Código: Referencia</strong>
+            </div>
+            <div class="card-body">
+              <pre><code class="language-javascript">
+      
+      
+      
+      &lt;div class="card-body"&gt;
+          &lt;h5&gt;El método &lt;code&gt;.removeClass()&lt;/code&gt; elimina una o varias clases específicas de un elemento.&lt;/h5&gt;
+      
+          &lt;!-- Elemento --&gt;
+          &lt;p id="texto" class="resaltado""&gt;
+              Este texto tiene la clase "resaltado".
+          &lt;/p&gt;
+      
+          &lt;!-- Botón --&gt;
+          &lt;button id="btnQuitar" class="btn btn-danger mt-2"&gt;Quitar clase&lt;/button&gt;
+      &lt;/div&gt;
+      
+      &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+      &lt;script&gt;
+      $(document).ready(function () {
+          $("#btnQuitar").click(function () {
+              $("#texto").removeClass("resaltado");
+          });
+      });
+      .resaltado2 {
+                  background-color: yellow;
+                  font-weight: bold;
+              }
+      
+                                  </code></pre>
+      
+      
+      
+            </div>
+            <div class="card mb-3">
+              <div class="card-header bg-primary text-white">
+                Ejemplo Visual: .removeClass()
+              </div>
+      
+              <div class="card-body">
+      
+                <h5>Haz clic en el botón para quitar la clase <code>resaltado</code> del texto:</h5>
+      
+                <!-- Elemento -->
+                <p id="texto" class="resaltado2" style="padding:10px; border:1px solid #ccc; background-color:yellow;">
+                  Este texto tiene la clase "resaltado".
+                </p>
+                <button id="btnQuitar7" class="btn btn-danger mt-2">Quitar clase</button>
+      
+      
+      
+      
+      
+      
+              </div>
+            </div>
+      
+            <br>
+            <h4>.toggleClass()</h4>
+            <div class="card-header bg-secondary text-white">
+              <strong>Código: Referencia</strong>
+            </div>
+            <div class="card-body">
+              <pre><code class="language-javascript">
+      
+      &lt;div class="card-body"&gt;
+          &lt;h5&gt;El método &lt;code&gt;.toggleClass()&lt;/code&gt; agrega la clase si no existe y la quita si ya está presente.&lt;/h5&gt;
+      
+          &lt;!-- Elemento --&gt;
+          &lt;div id="miCaja" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
+              Caja
+          &lt;/div&gt;
+      
+          &lt;!-- Botón --&gt;
+          &lt;button id="btnAlternar" class="btn btn-warning mt-2"&gt;Alternar clase&lt;/button&gt;
+      &lt;/div&gt;
+      
+      &lt;style&gt;
+          .activo {
+              background-color: lightgreen;
+              font-weight: bold;
+          }
+      &lt;/style&gt;
+      
+      &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+      &lt;script&gt;
+      $(document).ready(function () {
+          $("#btnAlternar").click(function () {
+              $("#miCaja").toggleClass("activo");
+          });
+      });
+      &lt;/script&gt;
+      
+        </code></pre>
+            </div>
+      
+            <div class="card mb-3">
+              <div class="card-header bg-primary text-white">
+                Ejemplo Visual: .toggleClass()
+              </div>
+      
+              <div class="card-body">
+                <h5>Haz clic en el botón para alternar la clase <code>activo</code> en la caja:</h5>
+      
+                <!-- Elemento -->
+                <div id="miCaja8"
+                  style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;">
+                  Caja
+                </div>
+                <button id="btnAlternar8" class="btn btn-warning mt-2">Alternar clase</button>
+      
+      
+      
+      
+      
+      
+      
+              </div>
+            </div>
+      
+      
+      
+          </div>
+        </div>
+      </div>
+      
+      
+      </div>
+      </div>
+      </div>
 
               <!-- TAB 4: Eventos -->
               <div

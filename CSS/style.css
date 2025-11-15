@@ -4,6 +4,32 @@
   text-align: center;
 }
 
+.EjemploInner {
+    background-color: yellow;
+    padding: 4px;
+    display: inline-block;
+}
+
+
+.resaltado {
+    background-color: yellow;
+    color: red;
+    font-weight: bold;
+}
+
+
+.resaltado2 {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+.activo2 {
+        background-color: lightgreen;
+        font-weight: bold;
+    }
+
+
+
 #cuadroDblClick {
   background-color: lightblue;
   width: 150px;
