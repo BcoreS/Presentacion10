@@ -395,11 +395,11 @@ $("div.contenedor");
                   </div>
                   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCuatro" aria-expanded="false" aria-controls="collapseCuatro">
         <h5>Seleccion por Jerarquia</h5>
       </button>
     </h2>
-    <div id="collapseFour" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+    <div id="collapseCuatro" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <p>los selectores por jerarquía permiten seleccionar elementos en función de su relación dentro del árbol DOM.</p>
         <div class="card-header bg-secondary text-white">
@@ -430,11 +430,11 @@ $("section p:last-child):
              </div>
           <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCinco5" aria-expanded="false" aria-controls="collapseCinco5">
         <h5>Seleccion por Atributo</h5>
       </button>
     </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+    <div id="collapseCinco5" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <p>Los selectores por atributo en jQuery permiten seleccionar elementos HTML basándose en los atributos que tienen. Se escriben entre corchetes [] </p>
         <div class="card-header bg-secondary text-white">
@@ -1165,12 +1165,12 @@ $(document).ready(function(){
 
                 <div class="accordion-item">
                   <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                      aria-expanded="true" aria-controls="collapseFour">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCuatro4"
+                      aria-expanded="true" aria-controls="collapseCuatro4">
                       <h5> Manipulacion de Contenido</h5>
                     </button>
                   </h2>
-                  <div id="collapseFour" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                  <div id="collapseCuatro4" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                       <p>La manipulación de contenido en el DOM se refiere a cambiar, agregar o eliminar el contenido interno de los
                         elementos HTML mediante JavaScript o jQuery.
@@ -1362,12 +1362,12 @@ $(document).ready(function () {
                                       <!--DOM 5-->
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
-            aria-expanded="true" aria-controls="collapseFive">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCinco5"
+            aria-expanded="true" aria-controls="collapseCinco5">
             <h5> Metodos Manipulacion de Atributo de clase</h5>
           </button>
         </h2>
-        <div id="collapseFive" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+        <div id="collapseCinco5" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <p>Los métodos de manipulación de atributos de clase en jQuery permiten agregar, eliminar o alternar clases CSS en
               los elementos del DOM de forma dinámica.
@@ -1379,35 +1379,35 @@ $(document).ready(function () {
             </div>
             <div class="card-body">
               <pre><code class="language-javascript">
-      
-      &lt;div class="card-body"&gt;
-          &lt;h5&gt;El método &lt;code&gt;.addClass()&lt;/code&gt; agrega una o varias clases CSS al elemento seleccionado.&lt;/h5&gt;
-      
-          &lt;!-- Elemento --&gt;
-          &lt;div id="miCaja" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
-              Caja
-          &lt;/div&gt;
-      
-          &lt;!-- Botón --&gt;
-          &lt;button id="btnAgregar" class="btn btn-primary mt-2"&gt;Agregar clase&lt;/button&gt;
-      &lt;/div&gt;
-      
-      &lt;style&gt;
-      .resaltado {
-          background-color: yellow;
-          color: red;
-          font-weight: bold;
-      }
-      &lt;/style&gt;
-      
-      &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
-      &lt;script&gt;
-      $(document).ready(function () {
-          $("#btnAgregar").click(function () {
-              $("#miCaja").addClass("resaltado");
-          });
-      });
-                                  </code></pre>
+
+&lt;div class="card-body"&gt;
+    &lt;h5&gt;El método &lt;code&gt;.addClass()&lt;/code&gt; agrega una o varias clases CSS al elemento seleccionado.&lt;/h5&gt;
+
+    &lt;!-- Elemento --&gt;
+    &lt;div id="miCaja" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
+        Caja
+    &lt;/div&gt;
+
+    &lt;!-- Botón --&gt;
+    &lt;button id="btnAgregar" class="btn btn-primary mt-2"&gt;Agregar clase&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.resaltado {
+    background-color: yellow;
+    color: red;
+    font-weight: bold;
+}
+&lt;/style&gt;
+
+&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function () {
+    $("#btnAgregar").click(function () {
+        $("#miCaja").addClass("resaltado");
+    });
+});
+                            </code></pre>
       
       
       
@@ -1437,7 +1437,7 @@ $(document).ready(function () {
       
               </div>
             </div>
-      
+
             <br>
             <h4>.hasClass()</h4>
             <div class="card-header bg-secondary text-white">
@@ -1445,33 +1445,33 @@ $(document).ready(function () {
             </div>
             <div class="card-body">
               <pre><code class="language-javascript">
-      
-      
-      lt;div class="card-body"&gt;
-          &lt;h5&gt;El método &lt;code&gt;.hasClass()&lt;/code&gt; verifica si el elemento tiene una clase específica (retorna true o false).&lt;/h5&gt;
-      
-          &lt;!-- Elemento --&gt;
-          &lt;div id="miCaja" class="activo" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
-              Caja
-          &lt;/div&gt;
-      
-          &lt;!-- Botón --&gt;
-          &lt;button id="btnVerificar" class="btn btn-primary mt-2"&gt;Verificar clase&lt;/button&gt;
-      &lt;/div&gt;
-      
-      &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
-      &lt;script&gt;
-      $(document).ready(function () {
-          $("#btnVerificar").click(function () {
-              if ($("#miCaja").hasClass("activo")) {
-                  alert("La caja tiene la clase 'activo'");
-              } else {
-                  alert("La caja NO tiene la clase 'activo'");
-              }
-          });
-      });
-      
-                                  </code></pre>
+
+
+lt;div class="card-body"&gt;
+    &lt;h5&gt;El método &lt;code&gt;.hasClass()&lt;/code&gt; verifica si el elemento tiene una clase específica (retorna true o false).&lt;/h5&gt;
+
+    &lt;!-- Elemento --&gt;
+    &lt;div id="miCaja" class="activo" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
+        Caja
+    &lt;/div&gt;
+
+    &lt;!-- Botón --&gt;
+    &lt;button id="btnVerificar" class="btn btn-primary mt-2"&gt;Verificar clase&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function () {
+    $("#btnVerificar").click(function () {
+        if ($("#miCaja").hasClass("activo")) {
+            alert("La caja tiene la clase 'activo'");
+        } else {
+            alert("La caja NO tiene la clase 'activo'");
+        }
+    });
+});
+
+                            </code></pre>
       
       
       
@@ -1485,59 +1485,57 @@ $(document).ready(function () {
       
       
       
-      
-                <h5>El método <code>.hasClass()</code> verifica si el elemento tiene una clase específica (retorna true o
-                  false).</h5>
-      
-                <!-- Elemento -->
-                <div id="miCaja6" class="activo"
-                  style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;">
-                  Caja
-                </div>
-      
-                <!-- Botón -->
-                <button id="btnVerificar1" class="btn btn-primary mt-2">Verificar clase</button>
-      
+                
+<h5>El método <code>.hasClass()</code> verifica si el elemento tiene una clase específica (retorna true o false).</h5>
+
+    <!-- Elemento -->
+    <div id="miCaja6" class="activo" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;">
+        Caja
+    </div>
+
+    <!-- Botón -->
+    <button id="btnVerificar1" class="btn btn-primary mt-2">Verificar clase</button>
+
       
       
       
               </div>
             </div>
-            <br>
+<br>
             <h4>.removeClass()</h4>
             <div class="card-header bg-secondary text-white">
               <strong>Código: Referencia</strong>
             </div>
             <div class="card-body">
               <pre><code class="language-javascript">
-      
-      
-      
-      &lt;div class="card-body"&gt;
-          &lt;h5&gt;El método &lt;code&gt;.removeClass()&lt;/code&gt; elimina una o varias clases específicas de un elemento.&lt;/h5&gt;
-      
-          &lt;!-- Elemento --&gt;
-          &lt;p id="texto" class="resaltado""&gt;
-              Este texto tiene la clase "resaltado".
-          &lt;/p&gt;
-      
-          &lt;!-- Botón --&gt;
-          &lt;button id="btnQuitar" class="btn btn-danger mt-2"&gt;Quitar clase&lt;/button&gt;
-      &lt;/div&gt;
-      
-      &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
-      &lt;script&gt;
-      $(document).ready(function () {
-          $("#btnQuitar").click(function () {
-              $("#texto").removeClass("resaltado");
-          });
-      });
-      .resaltado2 {
-                  background-color: yellow;
-                  font-weight: bold;
-              }
-      
-                                  </code></pre>
+
+
+
+&lt;div class="card-body"&gt;
+    &lt;h5&gt;El método &lt;code&gt;.removeClass()&lt;/code&gt; elimina una o varias clases específicas de un elemento.&lt;/h5&gt;
+
+    &lt;!-- Elemento --&gt;
+    &lt;p id="texto" class="resaltado""&gt;
+        Este texto tiene la clase "resaltado".
+    &lt;/p&gt;
+
+    &lt;!-- Botón --&gt;
+    &lt;button id="btnQuitar" class="btn btn-danger mt-2"&gt;Quitar clase&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function () {
+    $("#btnQuitar").click(function () {
+        $("#texto").removeClass("resaltado");
+    });
+});
+.resaltado2 {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+                            </code></pre>
       
       
       
@@ -1549,87 +1547,86 @@ $(document).ready(function () {
       
               <div class="card-body">
       
-                <h5>Haz clic en el botón para quitar la clase <code>resaltado</code> del texto:</h5>
-      
-                <!-- Elemento -->
-                <p id="texto" class="resaltado2" style="padding:10px; border:1px solid #ccc; background-color:yellow;">
-                  Este texto tiene la clase "resaltado".
-                </p>
-                <button id="btnQuitar7" class="btn btn-danger mt-2">Quitar clase</button>
-      
-      
-      
-      
-      
-      
-              </div>
-            </div>
-      
-            <br>
-            <h4>.toggleClass()</h4>
-            <div class="card-header bg-secondary text-white">
-              <strong>Código: Referencia</strong>
-            </div>
-            <div class="card-body">
-              <pre><code class="language-javascript">
-      
-      &lt;div class="card-body"&gt;
-          &lt;h5&gt;El método &lt;code&gt;.toggleClass()&lt;/code&gt; agrega la clase si no existe y la quita si ya está presente.&lt;/h5&gt;
-      
-          &lt;!-- Elemento --&gt;
-          &lt;div id="miCaja" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
-              Caja
-          &lt;/div&gt;
-      
-          &lt;!-- Botón --&gt;
-          &lt;button id="btnAlternar" class="btn btn-warning mt-2"&gt;Alternar clase&lt;/button&gt;
-      &lt;/div&gt;
-      
-      &lt;style&gt;
-          .activo {
-              background-color: lightgreen;
-              font-weight: bold;
-          }
-      &lt;/style&gt;
-      
-      &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
-      &lt;script&gt;
-      $(document).ready(function () {
-          $("#btnAlternar").click(function () {
-              $("#miCaja").toggleClass("activo");
-          });
-      });
-      &lt;/script&gt;
-      
-        </code></pre>
-            </div>
-      
-            <div class="card mb-3">
-              <div class="card-header bg-primary text-white">
-                Ejemplo Visual: .toggleClass()
-              </div>
-      
-              <div class="card-body">
-                <h5>Haz clic en el botón para alternar la clase <code>activo</code> en la caja:</h5>
-      
-                <!-- Elemento -->
-                <div id="miCaja8"
-                  style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;">
-                  Caja
-                </div>
-                <button id="btnAlternar8" class="btn btn-warning mt-2">Alternar clase</button>
-      
-      
-      
-      
+<h5>Haz clic en el botón para quitar la clase <code>resaltado</code> del texto:</h5>
+
+    <!-- Elemento -->
+    <p id="texto" class="resaltado2" style="padding:10px; border:1px solid #ccc; background-color:yellow;">
+        Este texto tiene la clase "resaltado".
+    </p>
+    <button id="btnQuitar7" class="btn btn-danger mt-2">Quitar clase</button>
+
+
+
       
       
       
               </div>
             </div>
+
+<br>
+<h4>.toggleClass()</h4>
+<div class="card-header bg-secondary text-white">
+  <strong>Código: Referencia</strong>
+</div>
+<div class="card-body">
+  <pre><code class="language-javascript">
+
+&lt;div class="card-body"&gt;
+    &lt;h5&gt;El método &lt;code&gt;.toggleClass()&lt;/code&gt; agrega la clase si no existe y la quita si ya está presente.&lt;/h5&gt;
+
+    &lt;!-- Elemento --&gt;
+    &lt;div id="miCaja" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;"&gt;
+        Caja
+    &lt;/div&gt;
+
+    &lt;!-- Botón --&gt;
+    &lt;button id="btnAlternar" class="btn btn-warning mt-2"&gt;Alternar clase&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .activo {
+        background-color: lightgreen;
+        font-weight: bold;
+    }
+&lt;/style&gt;
+
+&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(document).ready(function () {
+    $("#btnAlternar").click(function () {
+        $("#miCaja").toggleClass("activo");
+    });
+});
+&lt;/script&gt;
+
+  </code></pre>
+</div>
+
+<div class="card mb-3">
+  <div class="card-header bg-primary text-white">
+    Ejemplo Visual: .toggleClass()
+  </div>
+
+  <div class="card-body">
+    <h5>Haz clic en el botón para alternar la clase <code>activo</code> en la caja:</h5>
+
+    <!-- Elemento -->
+    <div id="miCaja8" style="width:150px; height:150px; border:1px solid #ccc; text-align:center; line-height:150px;">
+        Caja
+    </div>
+    <button id="btnAlternar8" class="btn btn-warning mt-2">Alternar clase</button>
+
+
+
+
       
       
       
+              </div>
+            </div>
+
+
+
           </div>
         </div>
       </div>
