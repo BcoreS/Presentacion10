@@ -2128,565 +2128,244 @@ $("#formSubmit").submit(function (e) {
       <!-- jQuery Section -->
 
       <!-- Google APIs Section -->
-      <section id="googleapis" class="mb-5">
-        <div class="card">
+      <div class="container my-5">
+
+
+    <!-- Tabs de Navegacion -->
+    <ul class="nav nav-tabs nav-fill mb-4" id="tabsGoogleAPI" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="maps-tab" data-bs-toggle="tab" data-bs-target="#mapsAPI" type="button"
+          role="tab">
+          <i></i> Google Maps
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="translate-tab" data-bs-toggle="tab" data-bs-target="#translate" type="button"
+          role="tab">
+          <i></i> Google Translate
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="charts-tab" data-bs-toggle="tab" data-bs-target="#charts" type="button" role="tab">
+          <i></i> Google Charts
+        </button>
+      </li>
+    </ul>
+
+    <!-- Contenido de las Tabs -->
+    <div class="tab-content" id="mainTabsContent">
+
+      <!-- ========== GOOGLE MAPS TAB ========== -->
+      <div class="tab-pane fade show active" id="mapsAPI" role="tabpanel">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="bi bi-geo-alt-fill"></i> Google Maps API</h3>
+          </div>
           <div class="card-body">
-            <h2 class="py-4 card-title">2. Google APIs</h2>
 
-            <ul class="nav nav-tabs" id="googleApiTabs" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link active"
-                  id="maps-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#maps"
-                  type="button"
-                  role="tab"
-                  aria-controls="maps"
-                  aria-selected="true"
-                >
-                  Google Maps
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="translate-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#translate"
-                  type="button"
-                  role="tab"
-                  aria-controls="translate"
-                  aria-selected="false"
-                >
-                  Google Translate
-                </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="charts-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#charts"
-                  type="button"
-                  role="tab"
-                  aria-controls="charts"
-                  aria-selected="false"
-                >
-                  Google Charts
-                </button>
-              </li>
-            </ul>
+            <!-- Accordion para ejemplos de Maps -->
+            <div class="accordion" id="mapsAcordion">
 
-            <div class="tab-content mt-3" id="googleApiTabsContent">
-              <div
-                class="tab-pane fade show active"
-                id="maps"
-                role="tabpanel"
-                aria-labelledby="maps-tab"
-              >
-                <h3 class="mb-4">Google Maps</h3>
-
-                <div class="accordion" id="googleMapsAccordion">
-                  <!-- Referencia Geolocation y 2. Obtener posición -->
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="mapsHeadingOne">
-                      <button
-                        class="accordion-button"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#mapsCollapseOne"
-                        aria-expanded="true"
-                        aria-controls="mapsCollapseOne"
-                      >
-                        <strong
-                          >1. Referencia Geolocation y 2. Obtener
-                          posición</strong
-                        >
-                      </button>
-                    </h2>
-                    <div
-                      id="mapsCollapseOne"
-                      class="accordion-collapse collapse show"
-                      aria-labelledby="mapsHeadingOne"
-                      data-bs-parent="#googleMapsAccordion"
-                    >
-                      <div class="accordion-body">
-                        <p class="text-muted">
-                          El objeto Geolocation de HTML5 permite acceder a la
-                          ubicación geográfica del dispositivo. No es parte de
-                          la API de Google Maps, pero se usa comúnmente para
-                          obtener la posición actual del usuario.
-                        </p>
-                        <div class="card bg-light mb-3">
-                          <div class="card-header bg-secondary text-white">
-                            <strong
-                              >Código: Referencia a Objeto Geolocation</strong
-                            >
-                          </div>
-                          <div class="card-body">
-                            <pre><code class="language-javascript">
-                          1. Referencia a Objeto Geolocation:
-                          if (navigator.geolocation) {
-                            console.log("Geolocation está disponible");
-                          } else {
-                            console.log("Geolocation no está disponible");
-                          }
-
-                          2. Obtener la Posición Actual:
-                          navigator.geolocation.getCurrentPosition(
-                            (position) => {
-                              const lat = position.coords.latitude;
-                              const lng = position.coords.longitude;
-                              console.log(`Latitud: ${lat}, Longitud: ${lng}`);
-                            },
-                            (error) => {
-                              console.error("Error al obtener la posición:", error);
-                            }
-                          );
-
-                          </code></pre>
-                          </div>
-                        </div>
-
-                        <!-- Mapa de ejemplo para Geolocation -->
-                        <div class="card mt-3">
-                          <div class="card-header bg-dark text-white">
-                            <strong>Ejemplo Visual - Mapa Geolocation</strong>
-                          </div>
-                          <div class="card-body">
-                            <button
-                              class="btn btn-primary mb-3"
-                              onclick="checkGeolocation()"
-                            >
-                              <i class="bi bi-geo-alt"></i> Verificar
-                              Geolocation
-                            </button>
-                            <div
-                              class="alert alert-info"
-                              id="geolocation-check-result"
-                              role="alert"
-                            >
-                              <strong>Resultado:</strong> Haz clic en el botón
-                              para verificar si Geolocation está disponible
-                            </div>
-                            <div
-                              id="map-geolocation-demo"
-                              style="height: 350px; background-color: #e9ecef"
-                              class="border rounded"
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 2. Manejo de errores -->
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="mapsHeadingThree">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#mapsCollapseThree"
-                        aria-expanded="false"
-                        aria-controls="mapsCollapseThree"
-                      >
-                        <strong>2. Manejo de errores</strong>
-                      </button>
-                    </h2>
-                    <div
-                      id="mapsCollapseThree"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="mapsHeadingThree"
-                      data-bs-parent="#googleMapsAccordion"
-                    >
-                      <div class="accordion-body">
-                        <p class="text-muted">
-                          El método getCurrentPosition() acepta un callback para
-                          manejar errores, como la denegación de permisos o la
-                          indisponibilidad del servicio. Tipos de errores
-                          comunes:
-                          <br /><br />
-                          PERMISSION_DENIED: El usuario no permitió el acceso a
-                          la ubicación.<br /><br />
-                          POSITION_UNAVAILABLE: La ubicación no está
-                          disponible.<br /><br />
-                          TIMEOUT: El servicio tardó demasiado en responder.<br /><br />
-                        </p>
-                        <div class="card bg-light mb-3">
-                          <div class="card-header bg-secondary text-white">
-                            <strong>Código: Manejo de errores</strong>
-                          </div>
-                          <div class="card-body">
-                            <pre><code class="language-javascript">
-                            navigator.geolocation.getCurrentPosition(
-                              (position) => {
-                                const lat = position.coords.latitude;
-                                const lng = position.coords.longitude;
-                                console.log(`Latitud: ${lat}, Longitud: ${lng}`);
-                              },
-                              (error) => {
-                                switch(error.code) {
-                                  case error.PERMISSION_DENIED:
-                                    console.error("El usuario denegó la solicitud de geolocalización.");
-                                    break;
-                                  case error.POSITION_UNAVAILABLE:
-                                    console.error("La información de ubicación no está disponible.");
-                                    break;
-                                  case error.TIMEOUT:
-                                    console.error("La solicitud de ubicación ha caducado.");
-                                    break;
-                                  default:
-                                    console.error("Error desconocido:", error);
-                                }
-                              }
-                            );
-                          </code></pre>
-                          </div>
-                        </div>
-
-                        <!-- Demostración de manejo de errores -->
-                        <div class="card mt-3">
-                          <div class="card-header bg-dark text-white">
-                            <strong
-                              >Demostración - Manejo de errores de
-                              Geolocation</strong
-                            >
-                          </div>
-                          <div class="card-body">
-                            <div
-                              class="btn-group mb-3"
-                              role="group"
-                              aria-label="Geolocation error demo"
-                            >
-                              <button
-                                class="btn btn-outline-primary"
-                                onclick="geoRequestPermissionDenied()"
-                              >
-                                Solicitar ubicación (niega el permiso)
-                              </button>
-                              <button
-                                class="btn btn-outline-warning"
-                                onclick="geoForceTimeout()"
-                              >
-                                Forzar TIMEOUT
-                              </button>
-                              <button
-                                class="btn btn-outline-secondary"
-                                onclick="geoSimulatePositionUnavailable()"
-                              >
-                                Simular POSITION_UNAVAILABLE
-                              </button>
-                              <button
-                                class="btn btn-outline-dark"
-                                onclick="geoClearResult()"
-                              >
-                                Limpiar
-                              </button>
-                            </div>
-                            <div
-                              id="geo-error-result"
-                              class="alert alert-info"
-                              role="alert"
-                            >
-                              Haz clic en un botón para ver el resultado aquí.
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 3. Cálculo de distancias entre puntos -->
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="mapsHeadingFour">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#mapsCollapseFour"
-                        aria-expanded="false"
-                        aria-controls="mapsCollapseFour"
-                      >
-                        <strong>3. Cálculo de distancias</strong>
-                      </button>
-                    </h2>
-                    <div
-                      id="mapsCollapseFour"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="mapsHeadingFour"
-                      data-bs-parent="#googleMapsAccordion"
-                    >
-                      <div class="accordion-body">
-                        <h5 class="text-secondary mt-3">
-                          Cálculo de distancias entre puntos
-                        </h5>
-                        <div class="card bg-light mb-3">
-                          <div class="card-header bg-info text-white">
-                            <strong>Código: Cálculo de distancias</strong>
-                          </div>
-                          <div class="card-body">
-                            <pre><code class="language-javascript">
-                            function calculateDistance(lat1, lng1, lat2, lng2) {
-                              const point1 = new google.maps.LatLng(lat1, lng1);
-                              const point2 = new google.maps.LatLng(lat2, lng2);
-                              const distance = google.maps.geometry.spherical.computeDistanceBetween(point1, point2);
-                              console.log(`La distancia es ${distance} metros.`);
-                            }
-
-                          </code></pre>
-                          </div>
-                        </div>
-
-                        <!-- Mapa de ejemplo para Cálculo de distancias -->
-                        <div class="card mt-3">
-                          <div class="card-header bg-dark text-white">
-                            <strong
-                              >Ejemplo Visual - Cálculo de Distancias</strong
-                            >
-                          </div>
-                          <div class="card-body">
-                            <!-- Controles para elegir puntos -->
-                            <div class="row g-2 align-items-center mb-3">
-                              <div class="col-md-5">
-                                <input
-                                  id="placeA"
-                                  type="text"
-                                  class="form-control"
-                                  placeholder="Punto A: escribe una dirección o haz clic en el mapa"
-                                />
-                              </div>
-                              <div class="col-md-5">
-                                <input
-                                  id="placeB"
-                                  type="text"
-                                  class="form-control"
-                                  placeholder="Punto B: escribe una dirección o haz clic en el mapa"
-                                />
-                              </div>
-                              <div class="col-md-2 d-grid d-md-block">
-                                <button
-                                  class="btn btn-outline-secondary me-2 mb-2 mb-md-0"
-                                  onclick="clearDistancePoints()"
-                                >
-                                  Limpiar
-                                </button>
-                                <button
-                                  class="btn btn-primary"
-                                  onclick="fitDistanceBounds()"
-                                >
-                                  Enfocar
-                                </button>
-                              </div>
-                            </div>
-
-                            <div
-                              id="distance-result"
-                              class="alert alert-info py-2 mb-3"
-                            >
-                              Indica dos puntos haciendo clic en el mapa o
-                              usando las cajas de búsqueda.
-                            </div>
-                            <div
-                              id="map-distance-calc"
-                              style="height: 400px; background-color: #e9ecef"
-                              class="border rounded"
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 4. Trazar una ruta -->
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFive">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseFive"
-                        aria-expanded="false"
-                        aria-controls="collapseFive"
-                      >
-                        <strong
-                          >4. Trazar una ruta desde mi posición actual al punto
-                          de negocio de la página</strong
-                        >
-                      </button>
-                    </h2>
-                    <div
-                      id="collapseFive"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingFive"
-                      data-bs-parent="#googleMapsAccordion"
-                    >
-                      <div class="accordion-body">
-                        <p class="text-muted">
-                          <strong>Ejemplo:</strong> Ruta desde la posición
-                          actual del usuario hasta el Parque Central de Alajuela
-                          <br />
-                          <span class="badge bg-warning text-dark"
-                            >Dirección: Parque Central, Alajuela, Costa
-                            Rica</span
-                          >
-                          <br />
-                          <span class="badge bg-info"
-                            >Coordenadas: 10.0162° N, -84.2118° W</span
-                          >
-                        </p>
-                        <div class="card bg-light mb-3">
-                          <div class="card-header bg-success text-white">
-                            <strong
-                              >Código: Trazar ruta al Parque Central, Alajuela,
-                              Costa Rica.</strong
-                            >
-                          </div>
-                          <div class="card-body">
-                            <pre><code class="language-javascript">
-// Coordenadas del Parque Central de Alajuela
-const DEST_PARQUE_CENTRAL = { lat: 10.0162, lng: -84.2118 };
-
-function initRouteMap() {
-  const mapDiv = document.getElementById('map');
-  if (!mapDiv) return;
-
-  // Crear mapa centrado en el Parque Central
-  const map = new google.maps.Map(mapDiv, {
-    center: DEST_PARQUE_CENTRAL,
-    zoom: 13,
-    mapTypeControl: true,
-  });
-
-  // Marcador del destino
-  new google.maps.Marker({
-    position: DEST_PARQUE_CENTRAL,
-    map: map,
-    title: 'Parque Central de Alajuela',
-    icon: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
-  });
-
-  // Obtener ubicación del usuario y trazar ruta
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const userLocation = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        // Marcador de ubicación del usuario
-        new google.maps.Marker({
-          position: userLocation,
-          map: map,
-          title: 'Tu ubicación',
-          icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-        });
-
-        // Configurar DirectionsService y Renderer
-        const directionsService = new google.maps.DirectionsService();
-        const directionsRenderer = new google.maps.DirectionsRenderer({
-          map: map,
-          suppressMarkers: false
-        });
-
-        // Solicitar la ruta
-        directionsService.route(
-          {
-            origin: userLocation,
-            destination: DEST_PARQUE_CENTRAL,
-            travelMode: google.maps.TravelMode.DRIVING
-          },
-          (response, status) => {
-            if (status === google.maps.DirectionsStatus.OK) {
-              directionsRenderer.setDirections(response);
-              
-              // Obtener información de la ruta
-              const route = response.routes[0].legs[0];
-              console.log(`Distancia: ${route.distance.text}`);
-              console.log(`Duración: ${route.duration.text}`);
-            } else {
-              console.error('Error al trazar la ruta:', status);
-            }
-          }
-        );
-      },
-      (error) => {
-        console.error('Error de geolocalización:', error);
-        alert('No se pudo obtener tu ubicación. Por favor, permite el acceso a la ubicación.');
-      }
-    );
-  } else {
-    alert('Tu navegador no soporta geolocalización.');
-  }
-}
-                          </code></pre>
-                          </div>
-                        </div>
-
-                        <!-- Mapa de ejemplo -->
-                        <div class="card">
-                          <div class="card-header bg-dark text-white">
-                            <strong
-                              >Vista del Mapa - Ruta Parque Central de
-                              Alajuela</strong
-                            >
-                          </div>
-                          <div class="card-body">
-                            <div
-                              class="alert alert-info mb-3"
-                              id="route-info"
-                              role="alert"
-                            >
-                              <strong>Estado:</strong> Cargando mapa y
-                              obteniendo tu ubicación...
-                            </div>
-                            <div
-                              id="map"
-                              style="height: 450px; background-color: #e9ecef"
-                              class="border rounded"
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+              <!-- Ejemplo 1: Obtener posicion y Verificar geolocalización -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mapsUno">
+                    <i></i> Obtener posicion y Verificar geolocalización
+                  </button>
+                </h2>
+                <div id="mapsUno" class="accordion-collapse collapse" data-bs-parent="#mapsAcordion">
+                  <div class="accordion-body">
+                    <p>Ubicación del usuario obtenida usando navigator.geolocation.getCurrentPosition. </br> Y mapa
+                      generado con Google Maps API.</p>
+                    <div id="map-ubicacion"
+                      style="height: 400px; border-radius: 8px; border-color: aqua; border-width: 1px;"></div>
                   </div>
                 </div>
-
-                <!-- Fin del Accordion -->
               </div>
 
-              <!-- Google Translate Tab -->
-              <div
-                class="tab-pane fade"
-                id="translate"
-                role="tabpanel"
-                aria-labelledby="translate-tab"
-              >
-                <h3>Google Translate</h3>
-                <ul>
-                  <li>Conceptos y uso básico</li>
-                </ul>
+              <!-- Ejemplo 3: Calculo de ruta con distancia -->
+              <div id="calculoRutaMaps" class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mapsTres">
+                    <i></i>Calculadora de ruta con distancia
+                  </button>
+                </h2>
+                <div id="mapsTres" class="accordion-collapse collapse" data-bs-parent="#mapsAcordion">
+                  <div class="accordion-body">
+                    <div class="row mb-3">
+                      <div class="col-md-5">
+                        <label class="form-label">
+                          Punto A (Origen): 
+                          <small class="text-muted">Tu ubicación actual</small>
+                        </label>
+                        <input type="text" id="puntoA" class="form-control" 
+                               placeholder="Cargando tu ubicación...">
+                      </div>
+                      <div class="col-md-5">
+                        <label class="form-label">Punto B (Destino):</label>
+                        <input type="text" id="puntoB" class="form-control"
+                               placeholder="Ingresa el destino">
+                      </div>
+                      <div class="col-md-2 d-flex align-items-end">
+                        <button class="btn btn-success w-100 me-2" onclick="generarRuta()">
+                          <i class="bi bi-search"></i> Buscar
+                        </button>
+                        <button class="btn btn-danger w-100" onclick="limpiarPuntosRuta()">
+                          <i class="bi bi-x-circle"></i> Limpiar
+                        </button>
+                      </div>
+                    </div>
+                    <div id="resultadp" class="alert alert-info">Selecciona dos puntos en el mapa</div>
+                    <div id="map-ruta"
+                      style="height: 400px; border-radius: 8px; border-color: aqua; border-width: 1px;"></div>
+                  </div>
+                </div>
               </div>
+            </div>
+            <!-- Final Acordion Maps -->
 
-              <!-- Google Charts Tab -->
-              <div
-                class="tab-pane fade"
-                id="charts"
-                role="tabpanel"
-                aria-labelledby="charts-tab"
-              >
-                <h3>Google Charts</h3>
-                <ul>
-                  <li>Conceptos y uso básico</li>
-                </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== GOOGLE TRANSLATE TAB ========== -->
+      <div class="tab-pane fade" id="translate" role="tabpanel">
+        <div class="card shadow-sm">
+          <div class="card-header bg-success text-white">
+            <h3 class="mb-0"><i></i> Google Translate API</h3>
+          </div>
+          <div class="card-body">
+            <!-- Example 1: Simple Translation -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <i class="bi bi-chat-square-text me-2"></i>Traducción Simple
+              </h2>
+              <div id="translate">
+                <div>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label fw-bold">Texto Original (Español):</label>
+                      <textarea id="textoOriginal" class="form-control" rows="4"
+                        placeholder="Escribe algo en español...">Hola, ¿cómo estás?</textarea>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label fw-bold">Traducción (Inglés):</label>
+                      <textarea id="textoTraducido" class="form-control" rows="4" readonly
+                        placeholder="La traducción aparecerá aquí..."></textarea>
+                    </div>
+                  </div>
+                  <button class="btn btn-success" onclick="traducirTexto()">
+                    <i></i> Traducir
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      <!-- ========== GOOGLE CHARTS TAB ========== -->
+      <div class="tab-pane fade" id="charts" role="tabpanel">
+        <div class="card shadow-sm">
+          <div class="card-header bg-warning text-dark">
+            <h3 class="mb-0"><i></i> Google Charts API - Ejemplos</h3>
+          </div>
+          <div class="card-body">
+
+            <!-- Acordion para Charts -->
+            <div class="accordion" id="chartsAcordion">
+
+              <!-- Ejemplo 1: Gráfico de Pastel -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chartsUno">
+                    <i></i> Gráfico de Pastel
+                  </button>
+                </h2>
+                <div id="chartsUno" class="accordion-collapse collapse" data-bs-parent="#chartsAcordion">
+                  <div class="accordion-body">
+                    <p class="text-muted">Distribución de tecnologías web más populares</p>
+                    <div id="graficoPastel" style="width: 100%; height: 400px;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ejemplo 2: Gráfico de Columnas -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#chartsDos">
+                    <i></i> Gráfico de Columnas
+                  </button>
+                </h2>
+                <div id="chartsDos" class="accordion-collapse collapse" data-bs-parent="#chartsAcordion">
+                  <div class="accordion-body">
+                    <p class="text-muted">Ventas mensuales comparativas</p>
+                    <div id="graficoColumnas" style="width: 100%; height: 400px;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ejemplo 3: Gráfico de Líneas -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#chartsTres">
+                    <i></i> Gráfico de Líneas
+                  </button>
+                </h2>
+                <div id="chartsTres" class="accordion-collapse collapse" data-bs-parent="#chartsAcordion">
+                  <div class="accordion-body">
+                    <p class="text-muted">Tendencia de crecimiento anual</p>
+                    <div id="graficoLineas" style="width: 100%; height: 400px;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ejemplo 4: Gráfico de Área -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#chartsCuatro">
+                    <i></i> Gráfico de Área
+                  </button>
+                </h2>
+                <div id="chartsCuatro" class="accordion-collapse collapse" data-bs-parent="#chartsAcordion">
+                  <div class="accordion-body">
+                    <p class="text-muted">Evolución del tráfico web</p>
+                    <div id="graficoArea" style="width: 100%; height: 400px;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ejemplo 5: Gráfico Geográfico -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#chartsCinco">
+                    <i></i> Gráfico Geográfico
+                  </button>
+                </h2>
+                <div id="chartsCinco" class="accordion-collapse collapse" data-bs-parent="#chartsAcordion">
+                  <div class="accordion-body">
+                    <p class="text-muted">Distribución de usuarios por país</p>
+                    <div id="graficoGeografico" style="width: 100%; height: 400px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Charts Accordion -->
+
+          </div>
+        </div>
+      </div>
+
     </div>
+    <!-- End Tab Content -->
+
+  </div>
 
     <!-- Footer -->
     <footer class="bg-primary text-white text-center py-4 mt-5">
@@ -2706,10 +2385,14 @@ function initRouteMap() {
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/jquery-3.7.1.min.js"></script>
     <script src="JS/JSPropio.js"></script>
-    <!-- Mueve la carga de Google Maps aquí y quita "async" -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA&libraries=geometry,places&callback=initMap"
-      defer
-    ></script>
+     <!-- Google Charts -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <!-- Google APIS -->
+  <script src="JS/GoogleAPIs.js"></script>
+
+  <!-- Carga de Google Maps-->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA&libraries=geometry,places&callback=initMap"
+    defer></script>
   </body>
 </html>
