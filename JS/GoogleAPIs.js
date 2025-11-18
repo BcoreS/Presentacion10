@@ -283,79 +283,6 @@ function limpiarPuntosRuta() {
   }
 }
 
-// Manejo de errores de geolocalización
-function handleLocationError(error, map) {
-  let errorMessage = '';
-  let errorType = '';
-  let suggestions = '';
-
-  switch (error.code) {
-    case error.PERMISSION_DENIED:
-      errorType = 'Permiso Denegado';
-      errorMessage = 'Has bloqueado el acceso a tu ubicación.';
-      suggestions = `
-                <strong>Soluciones:</strong>
-                <ul>
-                    <li>Haz clic en el ícono de candado en la barra de direcciones</li>
-                    <li>Selecciona "Permitir" para la ubicación</li>
-                    <li>Recarga la página</li>
-                </ul>
-            `;
-      break;
-
-    case error.POSITION_UNAVAILABLE:
-      errorType = 'Posición No Disponible';
-      errorMessage = 'No se pudo determinar tu ubicación.';
-      suggestions = `
-                <strong>Soluciones:</strong>
-                <ul>
-                    <li>Verifica que el GPS esté activado</li>
-                    <li>Asegúrate de tener conexión a internet</li>
-                </ul>
-            `;
-      break;
-
-    case error.TIMEOUT:
-      errorType = 'Tiempo de Espera Agotado';
-      errorMessage = 'La solicitud tardó demasiado.';
-      suggestions = '<strong>Intenta recargar la página.</strong>';
-      break;
-
-    default:
-      errorType = 'Error Desconocido';
-      errorMessage = 'Ocurrió un error inesperado.';
-      suggestions = '<strong>Intenta recargar la página.</strong>';
-  }
-
-  const errorInfoWindow = new google.maps.InfoWindow({
-    position: map.getCenter(),
-    content: `
-            <div style="padding: 15px; max-width: 300px;">
-                <h5 style="color: #dc3545;">${errorType}</h5>
-                <p>${errorMessage}</p>
-                ${suggestions}
-            </div>
-        `
-  });
-
-  errorInfoWindow.open(map);
-  console.error('Error de geolocalización:', error);
-}
-
-function handleBrowserNotSupported(map) {
-  const infoWindow = new google.maps.InfoWindow({
-    position: map.getCenter(),
-    content: `
-            <div style="padding: 15px;">
-                <h5 style="color: #dc3545;">Navegador No Compatible</h5>
-                <p>Tu navegador no soporta geolocalización.</p>
-            </div>
-        `
-  });
-
-  infoWindow.open(map);
-}
-
 // ==================== GOOGLE TRANSLATE ====================
 
 // Función para traducir texto usando Google Translate API
@@ -372,9 +299,8 @@ async function traducirTexto() {
   textoTraducido.value = 'Traduciendo...';
 
   try {
-    // API Key de Google Translate (la misma que usas para Maps)
-    const apiKey = 'AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA';
-    const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+    // API Key de Google Translate
+    const url = `https://translation.googleapis.com/language/translate/v2?key=AIzaSyD3OjxkORJpZjaMuBZNbnT0TPGGM0sHpDA`;
     
     const response = await fetch(url, {
       method: 'POST',
