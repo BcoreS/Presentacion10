@@ -36,12 +36,6 @@ function initMap() {
           animation: google.maps.Animation.DROP
         });
 
-        marker.addListener('click', () => {
-          infoWindow.open(map, marker);
-        });
-
-        infoWindow.open(map, marker);
-
         // Establecer ubicación del usuario como punto A por defecto
         establecerUbicacionUsuarioComoPuntoA(userLocation);
       },
